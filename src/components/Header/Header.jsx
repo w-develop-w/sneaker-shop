@@ -2,7 +2,7 @@ import styles from './Header.module.scss'
 
 function Header({ cart, setCart }) {
     return (
-        <div className={styles.header}>
+        <header className={styles.header}>
             <i
                 className={`${styles.firstIcon} ri-footprint-line`}
                 onClick={() => window.location.reload()}
@@ -14,7 +14,7 @@ function Header({ cart, setCart }) {
                 }}
                 className={`${styles.secondIcon} ri-shopping-cart-fill`}
             ></i>
-        </div>
+        </header>
     )
 }
 
