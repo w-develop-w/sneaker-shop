@@ -1,7 +1,6 @@
 import styles from './Cart.module.scss'
 
-function Cart () {
-
+function Cart ({cart, setCart}) {
     return (
         <>
             <div className={styles.cart}>
@@ -9,7 +8,9 @@ function Cart () {
                 <img src="/" alt="" />
 
                 <h3>Итого: 5 000 грн</h3>
-                <button>Оформить заказ</button>
+                <button onClick={() => {
+					setCart(!cart)
+				}}>Оформить заказ</button>
             </div>
 
         </>
