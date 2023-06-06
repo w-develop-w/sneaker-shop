@@ -1,84 +1,15 @@
 import styles from "./Card.module.scss"
 
-function Card() {
+function Card({name, price, url}) {
+
     return (
         <>
             <div className={styles.card}>
-                <img src="img/1.jpg" alt="" />
-                <h4>Puma X Aka Boku Future Rider</h4>
+                <img src={url} alt="" />
+                <h4> {name}</h4>
 
                 <div>
-                    <h5>PRICE: 100$</h5>
-                </div>
-                <button>Add in cart</button>
-            </div>
-
-            <div className={styles.card}>
-                <img src="img/1.jpg" alt="" />
-                <h4>Puma X Aka Boku Future Rider</h4>
-
-                <div>
-                    <h5>PRICE: 100$</h5>
-                </div>
-                <button>Add in cart</button>
-            </div>
-
-            <div className={styles.card}>
-                <img src="img/1.jpg" alt="" />
-                <h4>Puma X Aka Boku Future Rider</h4>
-
-                <div>
-                    <h5>PRICE: 100$</h5>
-                </div>
-                <button>Add in cart</button>
-            </div>
-
-            <div className={styles.card}>
-                <img src="img/1.jpg" alt="" />
-                <h4>Puma X Aka Boku Future Rider</h4>
-
-                <div>
-                    <h5>PRICE: 100$</h5>
-                </div>
-                <button>Add in cart</button>
-            </div>
-
-            <div className={styles.card}>
-                <img src="img/1.jpg" alt="" />
-                <h4>Puma X Aka Boku Future Rider</h4>
-
-                <div>
-                    <h5>PRICE: 100$</h5>
-                </div>
-                <button>Add in cart</button>
-            </div>
-
-            <div className={styles.card}>
-                <img src="img/1.jpg" alt="" />
-                <h4>Puma X Aka Boku Future Rider</h4>
-
-                <div>
-                    <h5>PRICE: 100$</h5>
-                </div>
-                <button>Add in cart</button>
-            </div>
-
-            <div className={styles.card}>
-                <img src="img/1.jpg" alt="" />
-                <h4>Puma X Aka Boku Future Rider</h4>
-
-                <div>
-                    <h5>PRICE: 100$</h5>
-                </div>
-                <button>Add in cart</button>
-            </div>
-
-            <div className={styles.card}>
-                <img src="img/1.jpg" alt="" />
-                <h4>Puma X Aka Boku Future Rider</h4>
-
-                <div>
-                    <h5>PRICE: 100$</h5>
+                    <h5>{price}$</h5>
                 </div>
                 <button>Add in cart</button>
             </div>
