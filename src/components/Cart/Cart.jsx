@@ -14,6 +14,18 @@ function Cart({ cart, setCart }) {
                     ></i>
                 </div>
 
+                <div className={styles.cards}>
+                    <div className={styles.card}>
+
+                        <img src="img/image5.jpg" alt="hehe" />
+                        <div>
+                            <h3>Мужские Кроссовки Nike Air Max 270</h3>
+                            <h3>4 000 грн</h3>
+                        </div>
+                        <i className="ri-close-circle-line"></i>
+                    </div>
+                </div>
+
                 <h3>Итого: 5 000 грн</h3>
                 <button
                     onClick={() => {

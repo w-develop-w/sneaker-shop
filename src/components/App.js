@@ -4,7 +4,7 @@ import Cart from "./Cart/Cart"
 import Header from "./Header/Header"
 
 function App() {
-    const [cart, setCart] = React.useState(false)
+    const [cart, setCart] = React.useState(true)
 
     return (
         <div className="App">
