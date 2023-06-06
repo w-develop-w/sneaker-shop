@@ -1,19 +1,17 @@
+@use '../../index.scss' as index;
+
 .header {
-	position: fixed;
+	margin: 0 auto;
 	margin-top: 10px;
 	width: 90%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: rgb(87, 87, 151);
+	background-color: index.$base-color;
 	border-radius: 50px;
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
 	z-index: 1;
 
 	h2 {
-		margin-left: 30px;
 		font-size: 25px;
 		color: white;
 	}

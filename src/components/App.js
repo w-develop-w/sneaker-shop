@@ -34,7 +34,6 @@ function App() {
 
     }, [])
 
-
     return (
         <div className="App">
             <Header cart={cart} setCart={setCart} />

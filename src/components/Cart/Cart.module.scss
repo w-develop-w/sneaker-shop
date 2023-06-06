@@ -34,6 +34,7 @@
         border-radius: 30px;
         background-color: index.$base-color;
         color: white;
+		box-shadow: 0 0 10px 5px rgb(137, 137, 137);
 
         div {
             padding: 0;
@@ -47,8 +48,11 @@
                 border: 1px solid white;
                 border-radius: 20px;
                 height: 75px;
-                padding: 25px;
-                
+                padding: 20px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
                 img {
                     border-radius: 10px;
                     width: 75px;
@@ -58,17 +62,17 @@
                 div {
                     display: flex;
                     flex-direction: column;
-                    max-width: 300px;
-                    text-align: left;
+					align-items: center;
                     
                     h3 {
                         margin: 0;
                         font-size: 20px;
                     }
+
                 }
 
                 i {
-                    font-size: 25px;
+                    font-size: 30px;
                     color: white;
                 }
             }
@@ -81,7 +85,7 @@
             align-items: flex-start;
             
             i {
-                font-size: 25px;
+                font-size: 30px;
                 transition: .2s;
 
                 &:hover {
@@ -112,6 +116,15 @@
 	.container {
 		.cart {
 			width: 70%;
+			.cards {
+				.card {
+					div {
+						h3 {
+							// font-size: 15px;
+						}
+					}
+				}
+			}
 		}
 	}
 }

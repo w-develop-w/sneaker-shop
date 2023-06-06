@@ -3,7 +3,7 @@
     height: 260px;
     padding: 20px;
     padding-top: 0px;
-    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+    box-shadow: 0 0 7px 3px rgba(221, 221, 221, 1);
     border-radius: 50px;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,12 @@
 
     h4 {
         padding-bottom: 20px;
+		font-weight: 400;
     }
+
+	h5 {
+		font-size: 20px;
+	}
 
     h4, h5 {
         margin: 0;
@@ -45,7 +50,9 @@
 			cursor: pointer;
             background-color: white;
             color: rgb(87, 87, 151);
-            outline: 2px solid rgb(87, 87, 151);
+            outline: 1px solid rgb(87, 87, 151);
+			transform: scale(105%);
+			box-shadow: 0 0 10px 5px rgb(218, 218, 218);
         }
     }
 

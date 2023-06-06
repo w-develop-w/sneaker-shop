@@ -30,7 +30,7 @@ function Cart({ cart, setCart }) {
                             <h3>Nike Air Max 270</h3>
                             <h3>160$</h3>
                         </div>
-                        <i className="ri-close-circle-line"></i>
+                        <i className="ri-close-fill"></i>
                     </div>
                 </div>
 
