@@ -1,0 +1,31 @@
+.header {
+	margin: 0 auto;
+	margin-top: 10px;
+	max-width: 90%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgb(87, 87, 151);
+	border-radius: 50px;
+	
+	h2 {
+		margin-left: 30px;
+		font-size: 25px;
+		color: white;
+		letter-spacing: 2px;
+	}
+
+	i {
+		margin-right: 30px;
+		font-size: 30px;
+		color: white;
+		transition: 0.3s;
+	}
+
+	i:hover {
+		cursor: pointer;
+		transform: scale(115%);
+	}
+
+}
+
