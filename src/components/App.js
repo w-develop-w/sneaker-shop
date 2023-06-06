@@ -12,7 +12,10 @@ function App() {
     const [cart, setCart] = useState(false)
     // cards - массив с карточками
     const [cards, setCards] = useState([])
-
+    
+    // cardsOfCart - массив с карточками из корзины 
+    const [cardsOfCart, setCardsOfCart] = useState([])
+    
     useEffect(() => {
         axios.get(
             "https://6478d572362560649a2e842a.mockapi.io/cards"
@@ -23,7 +26,17 @@ function App() {
 
     }, [])
 
-    console.log(cards)
+
+    useEffect(() => {
+        axios.get(
+            "https://6478d572362560649a2e842a.mockapi.io/cardsOfCart"
+        )
+        .then((res) => {
+        setCardsOfCart(res.data)
+        })
+
+    }, [])
+
 
     return (
         <div className="App">
