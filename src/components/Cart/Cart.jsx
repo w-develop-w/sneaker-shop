@@ -25,7 +25,7 @@ function Cart({ cart, setCart }) {
                 <div className={styles.cards}>
                     <div className={styles.card}>
 
-                        <img src="img/image5.jpg" alt="hehe" />
+                        <img src="img/1.jpg" alt="hehe"  />
                         <div>
                             <h3>Nike Air Max 270</h3>
                             <h3>160$</h3>
