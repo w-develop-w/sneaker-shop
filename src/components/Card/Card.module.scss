@@ -1,0 +1,44 @@
+.card {
+    width: 210px;
+    height: 260px;
+    padding: 20px;
+    padding-top: 0px;
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+
+    img {
+        width: 130px;
+        height: 130px;
+        // margin: 0 auto;
+    }
+
+    h4 {
+        padding-bottom: 20px;
+    }
+
+    h4, h5 {
+        margin: 0;
+    }
+
+
+    button {
+        // margin-top: 10px;
+        padding: 7px 25px;
+        background-color: rgb(87, 87, 151);
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-size: 15px;
+        &:hover {
+            background-color: white;
+            color: rgb(87, 87, 151);
+            outline: 2px solid rgb(87, 87, 151);
+        }
+    }
+
+}

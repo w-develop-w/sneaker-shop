@@ -13,7 +13,7 @@ function Cart({ cart, setCart }) {
         <div className={styles.container}>
             <div className={styles.cart}>
                 <div>
-                    <h2>Корзина</h2>
+                    <h2>Cart</h2>
                     <i
                         onClick={() => {
                             setCart(!cart)
@@ -27,20 +27,20 @@ function Cart({ cart, setCart }) {
 
                         <img src="img/image5.jpg" alt="hehe" />
                         <div>
-                            <h3>Мужские Кроссовки Nike Air Max 270</h3>
-                            <h3>4 000 грн</h3>
+                            <h3>Nike Air Max 270</h3>
+                            <h3>160$</h3>
                         </div>
                         <i className="ri-close-circle-line"></i>
                     </div>
                 </div>
 
-                <h3>Итого: 5 000 грн</h3>
+                <h3>Total: 120$</h3>
                 <button
                     onClick={() => {
                         setCart(!cart)
                     }}
                 >
-                    Оформить заказ
+                    Order
                 </button>
             </div>
         </div>

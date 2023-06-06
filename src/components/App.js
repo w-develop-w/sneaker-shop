@@ -8,7 +8,7 @@ import Search from './Search/Search'
 
 
 function App() {
-    const [cart, setCart] = React.useState(true)
+    const [cart, setCart] = React.useState(false)
 
     return (
         <div className="App">
