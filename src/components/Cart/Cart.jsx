@@ -1,6 +1,14 @@
-import styles from "./Cart.module.scss"
+import styles from './Cart.module.scss'
+import { useEffect } from 'react'
 
 function Cart({ cart, setCart }) {
+    useEffect(() => {
+        document.body.style.overflow = 'hidden'
+        return () => {
+            document.body.style.overflow = 'scroll'
+        }
+    }, [])
+
     return (
         <div className={styles.container}>
             <div className={styles.cart}>

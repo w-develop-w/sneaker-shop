@@ -1,3 +1,5 @@
+@use '../../index.scss' as index;
+
 .container {
     display: flex;
     justify-content: center;
@@ -30,7 +32,7 @@
         padding: 15px;
         width: 40%;
         border-radius: 30px;
-        background-color: rgb(87, 87, 151);
+        background-color: index.$base-color;
         color: white;
 
         div {
@@ -62,9 +64,16 @@
             &:hover {
                 cursor: pointer;
                 background-color: white;
-                color: rgb(87, 87, 151);
+				color: index.$base-color;
             }
         }
-
     }
+}
+
+@media screen and (max-width: 1024px) {
+	.container {
+		.cart {
+			width: 70%;
+		}
+	}
 }
