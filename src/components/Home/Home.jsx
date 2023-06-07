@@ -1,5 +1,5 @@
-import styles from "./Home.module.scss"
-import Card from "../Card/Card"
+import styles from './Home.module.scss'
+import Card from '../Card/Card'
 
 function Home({ cards }) {
     return (

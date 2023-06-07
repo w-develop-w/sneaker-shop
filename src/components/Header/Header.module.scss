@@ -1,38 +1,37 @@
 @use '../../index.scss' as index;
 
 .header {
-	margin: 0 auto;
-	margin-top: 10px;
-	width: 90%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: index.$base-color;
-	border-radius: 50px;
-	z-index: 1;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: index.$base-color;
+    border-radius: 50px;
+    z-index: 1;
 
-	h2 {
-		font-size: 25px;
-		color: white;
-	}
+    h2 {
+        font-size: 25px;
+        color: white;
+    }
 
-	i {
-		font-size: 30px;
-		color: white;
-		transition: 0.3s;
-	}
+    i {
+        font-size: 25px;
+        color: white;
+        transition: 0.3s;
+    }
 
-	.firstIcon {
-		margin-left: 30px;
-	}
+    .firstIcon {
+        margin-left: 30px;
+    }
 
-	.secondIcon {
-		margin-right: 30px;
-	}
+    .secondIcon {
+        margin-right: 30px;
+    }
 
-	i:hover {
-		cursor: pointer;
-		transform: scale(115%);
-	}
+    i:hover {
+        cursor: pointer;
+        transform: scale(115%);
+    }
 }
-

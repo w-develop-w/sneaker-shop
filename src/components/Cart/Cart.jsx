@@ -24,8 +24,43 @@ function Cart({ cart, setCart }) {
 
                 <div className={styles.cards}>
                     <div className={styles.card}>
+                        <img src="img/1.jpg" alt="hehe" />
+                        <div>
+                            <h3>Nike Air Max 270</h3>
+                            <h3>160$</h3>
+                        </div>
+                        <i className="ri-close-fill"></i>
+                    </div>
 
-                        <img src="img/1.jpg" alt="hehe"  />
+                    <div className={styles.card}>
+                        <img src="img/1.jpg" alt="hehe" />
+                        <div>
+                            <h3>Nike Air Max 270</h3>
+                            <h3>160$</h3>
+                        </div>
+                        <i className="ri-close-fill"></i>
+                    </div>
+
+                    <div className={styles.card}>
+                        <img src="img/1.jpg" alt="hehe" />
+                        <div>
+                            <h3>Nike Air Max 270</h3>
+                            <h3>160$</h3>
+                        </div>
+                        <i className="ri-close-fill"></i>
+                    </div>
+
+                    <div className={styles.card}>
+                        <img src="img/1.jpg" alt="hehe" />
+                        <div>
+                            <h3>Nike Air Max 270</h3>
+                            <h3>160$</h3>
+                        </div>
+                        <i className="ri-close-fill"></i>
+                    </div>
+
+                    <div className={styles.card}>
+                        <img src="img/1.jpg" alt="hehe" />
                         <div>
                             <h3>Nike Air Max 270</h3>
                             <h3>160$</h3>
@@ -34,7 +69,7 @@ function Cart({ cart, setCart }) {
                     </div>
                 </div>
 
-                <h3>Total: 120$</h3>
+                <h3 className={styles.priceTitle}>Total: 120$</h3>
                 <button
                     onClick={() => {
                         setCart(!cart)

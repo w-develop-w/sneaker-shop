@@ -10,11 +10,11 @@
     justify-items: center;
     align-items: center;
     text-align: center;
-	transition: .4s;
+    transition: 0.4s;
 
-	&:hover {
-		box-shadow: 0 0 10px 5px rgb(174, 174, 174);
-	}
+    &:hover {
+        box-shadow: 0 0 10px 5px rgb(174, 174, 174);
+    }
 
     img {
         width: 130px;
@@ -24,17 +24,17 @@
 
     h4 {
         padding-bottom: 20px;
-		font-weight: 400;
+        font-weight: 400;
     }
 
-	h5 {
-		font-size: 20px;
-	}
+    h5 {
+        font-size: 20px;
+    }
 
-    h4, h5 {
+    h4,
+    h5 {
         margin: 0;
     }
-
 
     button {
         margin-top: 10px;
@@ -44,16 +44,15 @@
         border: none;
         border-radius: 20px;
         font-size: 15px;
-		transition: .3s;
+        transition: 0.3s;
 
         &:hover {
-			cursor: pointer;
+            cursor: pointer;
             background-color: white;
             color: rgb(87, 87, 151);
             outline: 1px solid rgb(87, 87, 151);
-			transform: scale(105%);
-			box-shadow: 0 0 10px 5px rgb(218, 218, 218);
+            transform: scale(105%);
+            box-shadow: 0 0 10px 5px rgb(218, 218, 218);
         }
     }
-
 }

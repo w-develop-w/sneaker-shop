@@ -10,7 +10,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(7px); 
+    backdrop-filter: blur(7px);
     animation: any 0.3s;
 
     @keyframes any {
@@ -34,41 +34,44 @@
         border-radius: 30px;
         background-color: index.$base-color;
         color: white;
-		box-shadow: 0 0 10px 5px rgb(137, 137, 137);
+        box-shadow: 0 0 10px 5px rgb(137, 137, 137);
 
         div {
             padding: 0;
         }
 
         .cards {
-
-            padding: 0;
+            padding: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            overflow: auto;
+            max-height: 200px;
 
             .card {
                 border: 1px solid white;
                 border-radius: 20px;
                 height: 75px;
                 padding: 20px;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
 
                 img {
                     border-radius: 10px;
                     width: 75px;
                     height: 75px;
                 }
-                 
+
                 div {
                     display: flex;
                     flex-direction: column;
-					align-items: center;
-                    
+                    align-items: center;
+
                     h3 {
                         margin: 0;
                         font-size: 20px;
                     }
-
                 }
 
                 i {
@@ -83,10 +86,10 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            
+
             i {
                 font-size: 30px;
-                transition: .2s;
+                transition: 0.2s;
 
                 &:hover {
                     cursor: pointer;
@@ -99,32 +102,48 @@
         button {
             all: unset;
             outline: 1px solid white;
-            padding: 5px 13px;
+            padding: 5px 15px;
             border-radius: 20px;
-            transition: .3s;
+            transition: 0.3s;
+            font-size: 18px;
 
             &:hover {
                 cursor: pointer;
                 background-color: white;
-				color: index.$base-color;
+                color: index.$base-color;
             }
         }
     }
 }
 
+.priceTitle {
+    font-size: 23px;
+    font-weight: 400;
+}
+
 @media screen and (max-width: 1024px) {
-	.container {
-		.cart {
-			width: 70%;
-			.cards {
-				.card {
-					div {
-						h3 {
-							// font-size: 15px;
-						}
-					}
-				}
-			}
-		}
-	}
+    .container {
+        .cart {
+            width: 70%;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        .cart {
+            width: 70%;
+            .cards {
+                .card {
+                    div {
+                        h3 {
+                            max-width: 100px;
+                            text-align: center;
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -1,7 +1,6 @@
-import styles from "./Card.module.scss"
+import styles from './Card.module.scss'
 
-function Card({name, price, url}) {
-
+function Card({ name, price, url }) {
     return (
         <>
             <div className={styles.card}>
