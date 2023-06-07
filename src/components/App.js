@@ -45,13 +45,6 @@ function App() {
     //         })
     // }, [])
 
-    // Добавление карточки в корзину 
-
-    const addToCart = (obj) => {
-        // console.log(obj)
-        setCardsOfCart([...cardsOfCart, obj])
-    }
-
 
     return (
         <div className="App">
