@@ -14,19 +14,6 @@ function App() {
     // cardsOfCart - array with cards for cart
     const [cardsOfCart, setCardsOfCart] = useState([])
 
-    const addToCart = (obj) => {
-        setCardsOfCart([...cardsOfCart, obj])
-    }
-
-    const delFromCart = (obj) => {
-        const index = cardsOfCart.findIndex((item) => item.id === obj.id)
-        if (index !== -1) {
-            const updatedCards = [...cardsOfCart]
-            updatedCards.splice(index, 1)
-            setCardsOfCart(updatedCards)
-        }
-    }
-
     useEffect(() => {
         axios
             .get('https://6478d572362560649a2e842a.mockapi.io/cards')
@@ -48,13 +35,13 @@ function App() {
         <div className="App">
             <Header cart={cart} setCart={setCart} cardsOfCart={cardsOfCart}/>
             <Search length={cards.length} />
-            <Home addToCart={addToCart} cards={cards} />
+            <Home cards={cards} cardsOfCart={cardsOfCart} setCardsOfCart={setCardsOfCart} />
             {cart && (
                 <Cart
                     cart={cart}
                     setCart={setCart}
                     cardsOfCart={cardsOfCart}
-                    delFromCart={delFromCart}
+					setCardsOfCart={setCardsOfCart}
                 />
             )}
         </div>

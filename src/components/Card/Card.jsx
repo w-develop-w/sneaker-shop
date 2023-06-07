@@ -1,6 +1,17 @@
 import styles from './Card.module.scss'
 
-function Card({ id, name, price, url, addToCart, cards }) {
+function Card({ id, name, price, url, cards, cardsOfCart, setCardsOfCart }) {
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        })
+    }
+
+    const addToCart = (obj) => {
+        setCardsOfCart([...cardsOfCart, obj])
+    }
+
     return (
         <>
             <div className={styles.card}>
@@ -10,11 +21,7 @@ function Card({ id, name, price, url, addToCart, cards }) {
                 <div>
                     <h5>{price}$</h5>
                 </div>
-                <button
-                    onClick={() =>
-                        addToCart(cards.find((item) => item.id === id))
-                    }
-                >
+                <button onClick={() => {addToCart(cards.find((item) => item.id === id)); scrollToTop(); }}>
                     Add in cart
                 </button>
             </div>

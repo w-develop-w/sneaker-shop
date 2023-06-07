@@ -1,7 +1,7 @@
 import styles from './Home.module.scss'
 import Card from '../Card/Card'
 
-function Home({ cards, addToCart }) {
+function Home({ cards, cardsOfCart, setCardsOfCart }) {
     return (
         <div className={styles.home}>
             {cards.map((item) => (
@@ -11,8 +11,9 @@ function Home({ cards, addToCart }) {
                     name={item.name}
                     price={item.price}
                     url={item.url}
-                    addToCart={addToCart}
                     cards={cards}
+					cardsOfCart={cardsOfCart}
+					setCardsOfCart={setCardsOfCart}
                 />
             ))}
         </div>
