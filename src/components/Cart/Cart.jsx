@@ -47,8 +47,7 @@ function Cart({ cardsOfCart, cart, setCart, delFromCart }) {
                 </div>
 
                 <h3 className={styles.priceTitle}>
-                    Total:{' '}
-                    {cardsOfCart.reduce((acc, item) => acc + item.price, 0)}$
+                    Total:{cardsOfCart.reduce((acc, item) => acc + item.price, 0)}$
                 </h3>
                 <button
                     onClick={() => {
