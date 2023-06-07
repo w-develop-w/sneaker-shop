@@ -13,7 +13,9 @@ function Cart({ cardsOfCart, cart, setCart, delFromCart }) {
         <div className={styles.container}>
             <div className={styles.cart}>
                 <div>
-                    <h2>Cart</h2>
+                    <h2>
+                        Cart: {cardsOfCart.length !== 0 && cardsOfCart.length}
+                    </h2>
                     <i
                         onClick={() => {
                             setCart(!cart)
@@ -23,19 +25,25 @@ function Cart({ cardsOfCart, cart, setCart, delFromCart }) {
                 </div>
 
                 <div className={styles.cards}>
-                    {cardsOfCart.map((item) => (
-                        <div className={styles.card}>
-                            <img src={item.url} alt="hehe" />
-                            <div>
-                                <h3>{item.name}</h3>
-                                <h3>{item.price}$</h3>
+                    {cardsOfCart.length === 0 && (
+                        <h3 className={styles.emptyTitle}>
+                            Your cart is empty
+                        </h3>
+                    )}
+                    {cardsOfCart.length !== 0 &&
+                        cardsOfCart.map((item) => (
+                            <div className={styles.card}>
+                                <img src={item.url} alt="hehe" />
+                                <div>
+                                    <h3>{item.name}</h3>
+                                    <h3>{item.price}$</h3>
+                                </div>
+                                <i
+                                    onClick={() => delFromCart(item)}
+                                    className="ri-close-fill"
+                                ></i>
                             </div>
-                            <i
-                                onClick={() => delFromCart(item)}
-                                className="ri-close-fill"
-                            ></i>
-                        </div>
-                    ))}
+                        ))}
                 </div>
 
                 <h3 className={styles.priceTitle}>

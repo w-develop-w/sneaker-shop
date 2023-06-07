@@ -5,7 +5,6 @@ import Cart from './Cart/Cart'
 import Header from './Header/Header'
 import Home from './Home/Home'
 import Search from './Search/Search'
-import Card from './Card/Card'
 
 function App() {
     // state for render modal window
@@ -47,7 +46,7 @@ function App() {
 
     return (
         <div className="App">
-            <Header cart={cart} setCart={setCart} />
+            <Header cart={cart} setCart={setCart} cardsOfCart={cardsOfCart}/>
             <Search length={cards.length} />
             <Home addToCart={addToCart} cards={cards} />
             {cart && (
