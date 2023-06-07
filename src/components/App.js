@@ -23,20 +23,28 @@ function App() {
             })
     }, [])
 
-    useEffect(() => {
-        axios
-            .get('https://6478d572362560649a2e842a.mockapi.io/cardsOfCart')
-            .then((res) => {
-                setCardsOfCart(res.data)
-            })
-    }, [])
+    // useEffect(() => {
+    //     axios
+    //         .get('https://6478d572362560649a2e842a.mockapi.io/cardsOfCart')
+    //         .then((res) => {
+    //             setCardsOfCart(res.data)
+    //         })
+    // }, [])
+
+    // Добавление карточки в корзину 
+
+    const addToCart = (obj) => {
+        // console.log(obj)
+        setCardsOfCart([...cardsOfCart, obj])
+    }
+
 
     return (
         <div className="App">
             <Header cart={cart} setCart={setCart} />
             <Search length={cards.length} />
-            <Home cards={cards} />
-            {cart && <Cart cart={cart} setCart={setCart} />}
+            <Home cards={cards} addToCart={addToCart} />
+            {cart && <Cart cardsOfCart={cardsOfCart}  cart={cart} setCart={setCart} />}
         </div>
     )
 }
