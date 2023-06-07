@@ -1,7 +1,18 @@
 import ContentLoader from "react-content-loader"
 import styles from "./Card.module.scss"
 
-function Card({ id, name, price, url, addToCart, loading, cards }) {
+function Card({ id, name, price, url, cards, cardsOfCart, setCardsOfCart, loading }) {
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        })
+    }
+
+    const addToCart = (obj) => {
+        setCardsOfCart([...cardsOfCart, obj])
+    }
+
     return loading ? (
         <div className={styles.card}>
             <ContentLoader
@@ -26,8 +37,7 @@ function Card({ id, name, price, url, addToCart, loading, cards }) {
                 <h5>{price}$</h5>
             </div>
             <button
-                onClick={() => addToCart(cards.find((item) => item.id === id))}
-            >
+              onClick={() => {addToCart(cards.find((item) => item.id === id)); scrollToTop(); }}>
                 Add in cart
             </button>
         </div>

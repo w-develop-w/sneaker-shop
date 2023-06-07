@@ -1,13 +1,22 @@
 import styles from "./Cart.module.scss"
 import { useEffect } from "react"
 
-function Cart({ cardsOfCart, cart, setCart, delFromCart }) {
+function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
     useEffect(() => {
         document.body.style.overflow = "hidden"
         return () => {
             document.body.style.overflow = "auto"
         }
     }, [])
+
+    const delFromCart = (obj) => {
+        const index = cardsOfCart.findIndex((item) => item.id === obj.id)
+        if (index !== -1) {
+            const updatedCards = [...cardsOfCart]
+            updatedCards.splice(index, 1)
+            setCardsOfCart(updatedCards)
+        }
+    }
 
     return (
         <div className={styles.container}>
@@ -47,7 +56,8 @@ function Cart({ cardsOfCart, cart, setCart, delFromCart }) {
                 </div>
 
                 <h3 className={styles.priceTitle}>
-                    Total:{cardsOfCart.reduce((acc, item) => acc + item.price, 0)}$
+                    Total:{' '}
+                    {cardsOfCart.reduce((acc, item) => acc + item.price, 0)}$
                 </h3>
                 <button
                     onClick={() => {

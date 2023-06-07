@@ -1,10 +1,10 @@
-import "./App.scss"
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-import Cart from "./Cart/Cart"
-import Header from "./Header/Header"
-import Home from "./Home/Home"
-import Search from "./Search/Search"
+import './App.scss'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Cart from './Cart/Cart'
+import Header from './Header/Header'
+import Home from './Home/Home'
+import Search from './Search/Search'
 
 function App() {
     // state for render modal window
@@ -34,44 +34,39 @@ function App() {
     }, [])
    
 
-    const addToCart = (obj) => {
-        setCardsOfCart([...cardsOfCart, obj])
-    }
-
-    const delFromCart = (obj) => {
-        const index = cardsOfCart.findIndex((item) => item.id === obj.id)
-        if (index !== -1) {
-            const updatedCards = [...cardsOfCart]
-            updatedCards.splice(index, 1)
-            setCardsOfCart(updatedCards)
-        }
-    }
 
 
-    const onChangeSearchInput = (event) => {
-        setSearchValue(event.target.value)
-    }
+
+
+    // useEffect(() => {
+    //     axios
+    //         .get('https://6478d572362560649a2e842a.mockapi.io/cardsOfCart')
+    //         .then((res) => {
+    //             setCardsOfCart(res.data)
+    //         })
+    // }, [])
+
 
     return (
         <div className="App">
             <Header cart={cart} setCart={setCart} cardsOfCart={cardsOfCart} />
             <Search
-                length={cards.length}
                 searchValue={searchValue}
-                onChangeSearchInput={onChangeSearchInput}
+				setSearchValue={setSearchValue}
             />
             <Home
-                addToCart={addToCart}
                 cards={cards}
                 searchValue={searchValue}
-                isLoading={isLoading}
+                cardsOfCart={cardsOfCart}
+                setCardsOfCart={setCardsOfCart}
             />
+            <Home cards={cards}  searchValue={searchValue}/>
             {cart && (
                 <Cart
                     cart={cart}
                     setCart={setCart}
                     cardsOfCart={cardsOfCart}
-                    delFromCart={delFromCart}
+                    setCardsOfCart={setCardsOfCart}
                 />
             )}
         </div>
