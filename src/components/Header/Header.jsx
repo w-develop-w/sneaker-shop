@@ -1,6 +1,6 @@
 import styles from './Header.module.scss'
 
-function Header({ cart, setCart }) {
+function Header({ cart, setCart, cardsOfCart }) {
     return (
         <header className={styles.header}>
             <i
@@ -8,12 +8,18 @@ function Header({ cart, setCart }) {
                 onClick={() => window.location.reload()}
             ></i>
             <h2>Sneaker Shop</h2>
-            <i
-                onClick={() => {
-                    setCart(!cart)
-                }}
-                className={`${styles.secondIcon} ri-shopping-cart-fill`}
-            ></i>
+            <div>
+                <i
+                    onClick={() => {
+                        setCart(!cart)
+                    }}
+                    className={`${styles.secondIcon} ri-shopping-cart-fill`}
+                ></i>
+				{
+					cardsOfCart.length !== 0 && <span>{cardsOfCart.length}</span>
+				}
+				
+            </div>
         </header>
     )
 }

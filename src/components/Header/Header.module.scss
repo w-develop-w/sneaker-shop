@@ -16,11 +16,36 @@
         color: white;
     }
 
-    i {
-        font-size: 25px;
-        color: white;
-        transition: 0.3s;
-    }
+	i {
+		font-size: 25px;
+		color: white;
+		transition: 0.3s;
+	}
+
+	div {
+		position: relative;
+	}
+
+	span {
+		position: absolute;
+		padding: 1px 5px;
+		background-color: rgb(255, 149, 0);
+		border-radius: 50px;
+		font-size: 10px;
+		right: 12px;
+		bottom: 0;
+		font-weight: 500;
+		animation: .2s any;
+	}
+
+	@keyframes any {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 
     .firstIcon {
         margin-left: 30px;
@@ -32,6 +57,6 @@
 
     i:hover {
         cursor: pointer;
-        transform: scale(115%);
+		color: rgb(202, 202, 202);
     }
 }
