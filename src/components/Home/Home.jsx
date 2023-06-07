@@ -14,13 +14,13 @@ function Home({ cards, searchValue, cardsOfCart, setCardsOfCart, isLoading }) {
         <div className={styles.home}>
             {(isLoading ? [...Array(8)] : filteredCards).map((item, index) => (
                 <Card
-                    id={item ? item.id : null} // Проверка на существование item
+                    id={item ? item.id : null}
                     key={index}
                     name={item ? item.name : ''}
                     price={item ? item.price : ''}
                     url={item ? item.url : ''}
                     cards={cards}
-                    loading={isLoading} // Передача состояния загрузки в компонент Card
+                    loading={isLoading} 
                     cardsOfCart={cardsOfCart}
                     setCardsOfCart={setCardsOfCart}
                 />

@@ -40,9 +40,9 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
                         </h3>
                     )}
                     {cardsOfCart.length !== 0 &&
-                        cardsOfCart.map((item) => (
-                            <div className={styles.card}>
-                                <img src={item.url} alt="hehe" />
+                        cardsOfCart.map((item, index) => (
+                            <div className={styles.card} key={index}>
+                                <img src={item.url} alt="img" />
                                 <div>
                                     <h3>{item.name}</h3>
                                     <h3>{item.price}$</h3>
