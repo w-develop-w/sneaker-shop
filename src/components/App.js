@@ -17,6 +17,23 @@ function App() {
     // в поле инпут - поиск
     const [searchValue, setSearchValue] = useState("")
 
+    // в зависимости от значения  isLoading решаем показывать карточки товаров на главной или  же процесс загрузки
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        async function fetachData () {
+       
+            const itemsResponse = await axios.get("https://6478d572362560649a2e842a.mockapi.io/cards")
+
+            setIsLoading(false)
+        
+            setCards(itemsResponse.data)
+        }
+
+        fetachData ()
+    }, [])
+   
+
     const addToCart = (obj) => {
         setCardsOfCart([...cardsOfCart, obj])
     }
@@ -30,22 +47,6 @@ function App() {
         }
     }
 
-    useEffect(() => {
-        axios
-            .get("https://6478d572362560649a2e842a.mockapi.io/cards")
-            .then((res) => {
-                console.log(res)
-                setCards(res.data)
-            })
-    }, [])
-
-    // useEffect(() => {
-    //     axios
-    //         .get('https://6478d572362560649a2e842a.mockapi.io/cardsOfCart')
-    //         .then((res) => {
-    //             setCardsOfCart(res.data)
-    //         })
-    // }, [])
 
     const onChangeSearchInput = (event) => {
         setSearchValue(event.target.value)
@@ -59,7 +60,12 @@ function App() {
                 searchValue={searchValue}
                 onChangeSearchInput={onChangeSearchInput}
             />
-            <Home addToCart={addToCart} cards={cards}  searchValue={searchValue}/>
+            <Home
+                addToCart={addToCart}
+                cards={cards}
+                searchValue={searchValue}
+                isLoading={isLoading}
+            />
             {cart && (
                 <Cart
                     cart={cart}
