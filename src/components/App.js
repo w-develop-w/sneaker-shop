@@ -1,10 +1,10 @@
-import './App.scss'
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import Cart from './Cart/Cart'
-import Header from './Header/Header'
-import Home from './Home/Home'
-import Search from './Search/Search'
+import "./App.scss"
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import Cart from "./Cart/Cart"
+import Header from "./Header/Header"
+import Home from "./Home/Home"
+import Search from "./Search/Search"
 
 function App() {
     // state for render modal window
@@ -21,47 +21,36 @@ function App() {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        async function fetachData () {
-       
-            const itemsResponse = await axios.get("https://6478d572362560649a2e842a.mockapi.io/cards")
+        async function fetachData() {
+            const cartResponse = await axios.get(
+                "https://6478d572362560649a2e842a.mockapi.io/cardsOfCart"
+            )
+
+            const itemsResponse = await axios.get(
+                "https://6478d572362560649a2e842a.mockapi.io/cards"
+            )
 
             setIsLoading(false)
-        
+
+            setCardsOfCart(cartResponse.data)
             setCards(itemsResponse.data)
         }
 
-        fetachData ()
+        fetachData()
     }, [])
-   
-
-
-
-
-
-    // useEffect(() => {
-    //     axios
-    //         .get('https://6478d572362560649a2e842a.mockapi.io/cardsOfCart')
-    //         .then((res) => {
-    //             setCardsOfCart(res.data)
-    //         })
-    // }, [])
-
 
     return (
         <div className="App">
             <Header cart={cart} setCart={setCart} cardsOfCart={cardsOfCart} />
-            <Search
-                searchValue={searchValue}
-				setSearchValue={setSearchValue}
-            />
-            {/* <Home
+            <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+
+            <Home
                 cards={cards}
                 searchValue={searchValue}
+                isLoading={isLoading}
                 cardsOfCart={cardsOfCart}
                 setCardsOfCart={setCardsOfCart}
-
-            /> */}
-            <Home cards={cards}  searchValue={searchValue} isLoading={isLoading} cardsOfCart={cardsOfCart} setCardsOfCart={setCardsOfCart}/>
+            />
             {cart && (
                 <Cart
                     cart={cart}

@@ -1,5 +1,6 @@
-import styles from "./Cart.module.scss"
 import { useEffect } from "react"
+import axios from "axios"
+import styles from "./Cart.module.scss"
 
 function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
     useEffect(() => {
@@ -16,8 +17,11 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
             updatedCards.splice(index, 1)
             setCardsOfCart(updatedCards)
         }
+        axios.delete(
+            `https://6478d572362560649a2e842a.mockapi.io/cardsOfCart/${obj.id}`
+        )
     }
-
+    
     return (
         <div className={styles.container}>
             <div className={styles.cart}>
@@ -56,7 +60,7 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
                 </div>
 
                 <h3 className={styles.priceTitle}>
-                    Total:{' '}
+                    Total:{" "}
                     {cardsOfCart.reduce((acc, item) => acc + item.price, 0)}$
                 </h3>
                 <button

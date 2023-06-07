@@ -1,4 +1,5 @@
 import ContentLoader from "react-content-loader"
+import axios from "axios"
 import styles from "./Card.module.scss"
 
 function Card({ id, name, price, url, cards, cardsOfCart, setCardsOfCart, loading }) {
@@ -11,6 +12,15 @@ function Card({ id, name, price, url, cards, cardsOfCart, setCardsOfCart, loadin
 
     const addToCart = (obj) => {
         setCardsOfCart([...cardsOfCart, obj])
+
+        // if(cardsOfCart.find(item => Number(item.id) === Number(obj.id))) {
+            // axios.delete(`https://6478d572362560649a2e842a.mockapi.io/cardsOfCart/${obj.id}`)
+            // setCardsOfCart(prev => prev.filter(item => Number(item.id) !== Number(obj.id)))
+        // } else {
+
+            axios.post('https://6478d572362560649a2e842a.mockapi.io/cardsOfCart', obj)
+            setCardsOfCart([...cardsOfCart, obj])
+        // }
     }
 
     return loading ? (
