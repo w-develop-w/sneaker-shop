@@ -5,14 +5,28 @@ import Cart from './Cart/Cart'
 import Header from './Header/Header'
 import Home from './Home/Home'
 import Search from './Search/Search'
+import Card from './Card/Card'
 
 function App() {
+    // state for render modal window
     const [cart, setCart] = useState(false)
-    // cards - массив с карточками
+    // cards - array with cards
     const [cards, setCards] = useState([])
-
-    // cardsOfCart - массив с карточками из корзины
+    // cardsOfCart - array with cards for cart
     const [cardsOfCart, setCardsOfCart] = useState([])
+
+    const addToCart = (obj) => {
+        setCardsOfCart([...cardsOfCart, obj])
+    }
+
+    const delFromCart = (obj) => {
+        const index = cardsOfCart.findIndex((item) => item.id === obj.id)
+        if (index !== -1) {
+            const updatedCards = [...cardsOfCart]
+            updatedCards.splice(index, 1)
+            setCardsOfCart(updatedCards)
+        }
+    }
 
     useEffect(() => {
         axios
@@ -43,8 +57,15 @@ function App() {
         <div className="App">
             <Header cart={cart} setCart={setCart} />
             <Search length={cards.length} />
-            <Home cards={cards} addToCart={addToCart} />
-            {cart && <Cart cardsOfCart={cardsOfCart}  cart={cart} setCart={setCart} />}
+            <Home addToCart={addToCart} cards={cards} />
+            {cart && (
+                <Cart
+                    cart={cart}
+                    setCart={setCart}
+                    cardsOfCart={cardsOfCart}
+                    delFromCart={delFromCart}
+                />
+            )}
         </div>
     )
 }

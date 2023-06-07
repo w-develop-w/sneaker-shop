@@ -1,6 +1,6 @@
 import styles from "./Card.module.scss"
 
-function Card({ name, price, url, addToCart }) {
+function Card({ id, name, price, url, addToCart, cards }) {
     return (
         <>
             <div className={styles.card}>
@@ -10,7 +10,11 @@ function Card({ name, price, url, addToCart }) {
                 <div>
                     <h5>{price}$</h5>
                 </div>
-                <button onClick={() => addToCart({ name, price, url })}>
+                <button
+                    onClick={() =>
+                        addToCart(cards.find((item) => item.id === id))
+                    }
+                >
                     Add in cart
                 </button>
             </div>

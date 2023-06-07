@@ -6,12 +6,13 @@ function Home({ cards, addToCart }) {
         <div className={styles.home}>
             {cards.map((item) => (
                 <Card
-                    key={item.id}
                     id={item.id}
+                    key={item.id}
                     name={item.name}
                     price={item.price}
                     url={item.url}
                     addToCart={addToCart}
+                    cards={cards}
                 />
             ))}
         </div>

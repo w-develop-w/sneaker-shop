@@ -1,7 +1,7 @@
 import styles from "./Cart.module.scss"
 import { useEffect } from "react"
 
-function Cart({ cardsOfCart, cart, setCart }) {
+function Cart({ cardsOfCart, cart, setCart, delFromCart }) {
     useEffect(() => {
         document.body.style.overflow = "hidden"
         return () => {
@@ -23,19 +23,25 @@ function Cart({ cardsOfCart, cart, setCart }) {
                 </div>
 
                 <div className={styles.cards}>
-                    {cardsOfCart.map(item => (
+                    {cardsOfCart.map((item) => (
                         <div className={styles.card}>
-                            <img src={item.url} alt="Img" />
+                            <img src={item.url} alt="hehe" />
                             <div>
                                 <h3>{item.name}</h3>
                                 <h3>{item.price}$</h3>
                             </div>
-                            <i className="ri-close-fill"></i>
+                            <i
+                                onClick={() => delFromCart(item)}
+                                className="ri-close-fill"
+                            ></i>
                         </div>
                     ))}
                 </div>
 
-                <h3 className={styles.priceTitle}>Total: 120$</h3>
+                <h3 className={styles.priceTitle}>
+                    Total:{' '}
+                    {cardsOfCart.reduce((acc, item) => acc + item.price, 0)}$
+                </h3>
                 <button
                     onClick={() => {
                         setCart(!cart)
