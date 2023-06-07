@@ -1,4 +1,4 @@
-import styles from './Card.module.scss'
+import styles from "./Card.module.scss"
 
 function Card({ id, name, price, url, cards, cardsOfCart, setCardsOfCart }) {
     const scrollToTop = () => {
