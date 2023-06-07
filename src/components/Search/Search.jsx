@@ -1,9 +1,13 @@
 import styles from './Search.module.scss'
 
-function Search({ length, searchValue, onChangeSearchInput }) {
+function Search({ searchValue, setSearchValue }) {
+    const onChangeSearchInput = (event) => {
+        setSearchValue(event.target.value)
+    }
+
     return (
         <div className={styles.search}>
-            <h2>All count of shoes: {length}</h2>
+            <h2>All count of shoes: </h2>
             <input type="text" placeholder="Find some..." value={searchValue} onChange={onChangeSearchInput} />
         </div>
     )

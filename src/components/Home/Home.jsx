@@ -1,14 +1,18 @@
-import styles from "./Home.module.scss"
-import Card from "../Card/Card"
+import styles from './Home.module.scss'
+import Card from '../Card/Card';
 
-function Home({ cards, searchValue }) {
-    const filteredItems = cards.filter((item) =>
+function filterItems(items, searchValue) {
+    return items.filter((item) =>
         item.name.toLowerCase().includes(searchValue.toLowerCase())
-    )
+    );
+}
+
+function Home({ cards, searchValue, cardsOfCart, setCardsOfCart }) {
+	const filteredCards = filterItems(cards, searchValue);
 
     return (
         <div className={styles.home}>
-            {filteredItems.map((item) => (
+            {filteredCards.map((item) => (
                 <Card
                     id={item.id}
                     key={item.id}
@@ -16,8 +20,8 @@ function Home({ cards, searchValue }) {
                     price={item.price}
                     url={item.url}
                     cards={cards}
-					cardsOfCart={cardsOfCart}
-					setCardsOfCart={setCardsOfCart}
+                    cardsOfCart={cardsOfCart}
+                    setCardsOfCart={setCardsOfCart}
                 />
             ))}
         </div>
