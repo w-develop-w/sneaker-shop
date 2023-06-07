@@ -54,13 +54,6 @@ function App() {
                 searchValue={searchValue}
 				setSearchValue={setSearchValue}
             />
-            {/* <Home
-                cards={cards}
-                searchValue={searchValue}
-                cardsOfCart={cardsOfCart}
-                setCardsOfCart={setCardsOfCart}
-
-            /> */}
             <Home cards={cards}  searchValue={searchValue} isLoading={isLoading} cardsOfCart={cardsOfCart} setCardsOfCart={setCardsOfCart}/>
             {cart && (
                 <Cart
