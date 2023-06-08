@@ -36,8 +36,17 @@
         margin: 0;
     }
 
-    button {
-        margin-top: 10px;
+	.btnsContainer {
+		margin-top: 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: 10px;
+	}
+
+
+    .addInBuy {
+        // margin-top: 10px;
         padding: 7px 25px;
         background-color: rgb(87, 87, 151);
         color: white;
@@ -51,8 +60,28 @@
             background-color: white;
             color: rgb(87, 87, 151);
             outline: 1px solid rgb(87, 87, 151);
-            transform: scale(105%);
+            transform: scale(102%);
             box-shadow: 0 0 10px 5px rgb(218, 218, 218);
         }
     }
+
+	.addInFavorite {
+		font-size: 25px;
+        transition: 0.3s;
+		color: rgb(87, 87, 151);
+		&:hover {
+			cursor: pointer;
+			color: rgb(255, 39, 75);
+		}
+	}
+
+	.addInCart {
+		font-size: 25px;
+        transition: 0.3s;
+		color: rgb(87, 87, 151);
+		&:hover {
+			cursor: pointer;
+			color: rgb(156, 158, 12);
+		}
+	}
 }

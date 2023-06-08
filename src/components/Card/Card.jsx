@@ -56,14 +56,19 @@ function Card({
             <div>
                 <h5>{price}$</h5>
             </div>
-            <button
-                onClick={() => {
-                    addToCart(cards.find((item) => item.id === id))
-                    scrollToTop()
-                }}
-            >
-                Add in cart
-            </button>
+            <div className={styles.btnsContainer}>
+                <button
+                    className={styles.addInBuy}
+                    onClick={() => {
+                        addToCart(cards.find((item) => item.id === id))
+                        scrollToTop()
+                    }}
+                >
+                    Buy
+                </button>
+                <i className={`ri-heart-2-fill ${styles.addInFavorite}`}></i>
+				<i className={`ri-shopping-cart-fill ${styles.addInCart}`}></i>
+            </div>
         </div>
     )
 }
