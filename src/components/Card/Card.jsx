@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader'
 import styles from './Card.module.scss'
-import { useState } from 'react'
+// import { useState } from 'react'
 
 function Card({
     id,
