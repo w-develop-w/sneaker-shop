@@ -26,13 +26,13 @@
 		position: relative;
 	}
 
-	span {
+	.spanForCart {
 		position: absolute;
 		padding: 1px 5px;
 		background-color: rgb(255, 149, 0);
 		border-radius: 50px;
 		font-size: 10px;
-		right: 12px;
+		right: 25px;
 		bottom: 0;
 		font-weight: 500;
 		animation: .2s any;
@@ -54,6 +54,23 @@
     .secondIcon {
         margin-right: 30px;
     }
+
+	.iconsContainer {
+		display: flex;
+		gap: 20px;
+	}
+
+	.spanForFavorites {
+		position: absolute;
+		padding: 1px 5px;
+		background-color: rgb(255, 149, 0);
+		border-radius: 50px;
+		font-size: 10px;
+		right: -4px;
+		bottom: 0;
+		font-weight: 500;
+		animation: .2s any;
+	}
 
     i:hover {
         cursor: pointer;

@@ -5,10 +5,14 @@ import Cart from './Cart/Cart'
 import Header from './Header/Header'
 import Home from './Home/Home'
 import Search from './Search/Search'
+import Favorites from './Favorites/Favorites'
 
 function App() {
     // state for render modal window
     const [cart, setCart] = useState(false)
+    // state for render favorites
+    const [favorites, setFavorites] = useState(true)
+
     // cards - array with cards
     const [cards, setCards] = useState([])
     // cardsOfCart - array with cards for cart
@@ -41,9 +45,15 @@ function App() {
 
     return (
         <div className="App">
-            <Header cart={cart} setCart={setCart} cardsOfCart={cardsOfCart} />
-            <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-
+            <Header
+                cart={cart}
+                setCart={setCart}
+                cardsOfCart={cardsOfCart}
+                favorites={favorites}
+                setFavorites={setFavorites}
+            />
+			{favorites && <Favorites/>}
+            {/* <Search searchValue={searchValue} setSearchValue={setSearchValue} />
             <Home
                 cards={cards}
                 searchValue={searchValue}
@@ -58,7 +68,7 @@ function App() {
                     cardsOfCart={cardsOfCart}
                     setCardsOfCart={setCardsOfCart}
                 />
-            )}
+            )} */}
         </div>
     )
 }
