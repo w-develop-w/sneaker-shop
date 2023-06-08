@@ -1,5 +1,6 @@
 import ContentLoader from 'react-content-loader'
 import styles from './Card.module.scss'
+import { useState } from 'react'
 
 function Card({
     id,
@@ -10,6 +11,8 @@ function Card({
     cardsOfCart,
     setCardsOfCart,
     loading,
+    setCardsOfFavorites,
+    cardsOfFavorites,
 }) {
     const scrollToTop = () => {
         window.scrollTo({
@@ -32,6 +35,25 @@ function Card({
 
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }
+
+	const addToFavorites = (obj) => {
+		if (cardsOfFavorites.some((item) => item.id === obj.id)) {
+			return; 
+		}
+	
+		setCardsOfFavorites([...cardsOfFavorites, obj]);
+		var favoritesItems = localStorage.getItem('favoritesItems');
+	
+		if (!favoritesItems) {
+			favoritesItems = [];
+		} else {
+			favoritesItems = JSON.parse(favoritesItems);
+		}
+	
+		favoritesItems.push(obj);
+	
+		localStorage.setItem('favoritesItems', JSON.stringify(favoritesItems));
+	}
 
     return loading ? (
         <div className={styles.card}>
@@ -57,17 +79,21 @@ function Card({
                 <h5>{price}$</h5>
             </div>
             <div className={styles.btnsContainer}>
-                <button
-                    className={styles.addInBuy}
+                <button className={styles.addInBuy}>Buy</button>
+                <i
+                    onClick={() => {
+                        addToFavorites(cards.find((item) => item.id === id))
+                        scrollToTop()
+                    }}
+                    className={`ri-heart-2-fill ${styles.addInFavorite}`}
+                ></i>
+                <i
                     onClick={() => {
                         addToCart(cards.find((item) => item.id === id))
                         scrollToTop()
                     }}
-                >
-                    Buy
-                </button>
-                <i className={`ri-heart-2-fill ${styles.addInFavorite}`}></i>
-				<i className={`ri-shopping-cart-fill ${styles.addInCart}`}></i>
+                    className={`ri-shopping-cart-fill ${styles.addInCart}`}
+                ></i>
             </div>
         </div>
     )

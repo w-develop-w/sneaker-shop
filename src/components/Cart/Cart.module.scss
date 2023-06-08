@@ -47,7 +47,7 @@
             gap: 10px;
             overflow: auto;
             max-height: 200px;
-
+			overflow-y: scroll;
             .card {
                 border: 1px solid white;
                 border-radius: 20px;
@@ -85,7 +85,7 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
 
             i {
                 font-size: 30px;
@@ -124,6 +124,12 @@
 .emptyTitle {
 	font-weight: 400;
 	font-size: 20px;
+}
+
+.totalContent {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 @media screen and (max-width: 1024px) {

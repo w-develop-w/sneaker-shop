@@ -32,9 +32,12 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
         <div className={styles.container}>
             <div className={styles.cart}>
                 <div>
-                    <h2>
-                        Cart: {cardsOfCart.length !== 0 && cardsOfCart.length}
-                    </h2>
+                    <div>
+                        <h2>
+                            Cart:
+                            {cardsOfCart.length !== 0 && cardsOfCart.length}
+                        </h2>
+                    </div>
                     <i
                         onClick={() => {
                             setCart(!cart)
@@ -42,7 +45,6 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
                         className="ri-close-circle-line"
                     ></i>
                 </div>
-
                 <div className={styles.cards}>
                     {cardsOfCart.length === 0 && (
                         <h3 className={styles.emptyTitle}>
@@ -65,10 +67,22 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
                         ))}
                 </div>
 
-                <h3 className={styles.priceTitle}>
-                    Total:{' '}
-                    {cardsOfCart.reduce((acc, item) => acc + item.price, 0)}$
-                </h3>
+                <div className={styles.totalContent}>
+                    <h3 className={styles.priceTitle}>
+                        Total:{' '}
+                        {cardsOfCart.reduce((acc, item) => acc + item.price, 0)}
+                        $
+                    </h3>
+                    <button
+                        onClick={() => {
+                            setCardsOfCart([])
+							localStorage.setItem('cartItems', JSON.stringify([]))
+                        }}
+                    >
+                        Clear all
+                    </button>
+                </div>
+
                 <button
                     onClick={() => {
                         setCart(!cart)

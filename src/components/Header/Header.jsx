@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './Header.module.scss'
 
-function Header({ cart, setCart, cardsOfCart }) {
+function Header({ cart, setCart, cardsOfCart, cardsOfFavorites }) {
     return (
         <header className={styles.header}>
             <Link className={styles.links} to="/">
@@ -13,9 +13,9 @@ function Header({ cart, setCart, cardsOfCart }) {
                 <Link className={styles.links} to="/favorites">
                     <div className={styles.iconContent}>
                         <i className="ri-heart-2-fill"></i>
-                        {cardsOfCart.length !== 0 && (
+                        {cardsOfFavorites.length !== 0 && (
                             <span className={styles.spanForFavorites}>
-                                {cardsOfCart.length}
+                                {cardsOfFavorites.length}
                             </span>
                         )}
                     </div>

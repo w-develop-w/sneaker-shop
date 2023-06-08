@@ -1,7 +1,6 @@
 import './App.scss'
 import React, { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { BrowserRouter as Switch } from 'react-router-dom'
 import axios from 'axios'
 import Cart from './Cart/Cart'
 import Header from './Header/Header'
@@ -16,6 +15,8 @@ function App() {
     const [cards, setCards] = useState([])
     // cardsOfCart - array with cards for cart
     const [cardsOfCart, setCardsOfCart] = useState([])
+
+    const [cardsOfFavorites, setCardsOfFavorites] = useState([])
     //  searchValue - переменная для храния данных которые ввел пользователь в поле инпут - поиск
     const [searchValue, setSearchValue] = useState('')
     // в зависимости от значения  isLoading решаем показывать карточки товаров на главной или  же процесс загрузки
@@ -23,6 +24,10 @@ function App() {
 
     useEffect(() => {
         let cartItems = localStorage.getItem('cartItems')
+        let favoritesItems = localStorage.getItem('favoritesItems')
+        if (favoritesItems) {
+            setCardsOfFavorites(JSON.parse(favoritesItems))
+        }
 
         if (cartItems) {
             setCardsOfCart(JSON.parse(cartItems))
@@ -44,7 +49,12 @@ function App() {
 
     return (
         <div className="App">
-            <Header cart={cart} setCart={setCart} cardsOfCart={cardsOfCart} />
+            <Header
+                cart={cart}
+                setCart={setCart}
+                cardsOfCart={cardsOfCart}
+                cardsOfFavorites={cardsOfFavorites}
+            />
 
             <Routes>
                 <Route
@@ -62,6 +72,8 @@ function App() {
                                 isLoading={isLoading}
                                 cardsOfCart={cardsOfCart}
                                 setCardsOfCart={setCardsOfCart}
+                                setCardsOfFavorites={setCardsOfFavorites}
+                                cardsOfFavorites={cardsOfFavorites}
                             />
                             {cart && (
                                 <Cart
@@ -79,7 +91,13 @@ function App() {
                     exact
                     element={
                         <>
-                            <Favorites />
+                            <Favorites
+                                cards={cards}
+                                cardsOfFavorites={cardsOfFavorites}
+                                setCardsOfFavorites={setCardsOfFavorites}
+                                cardsOfCart={cardsOfCart}
+                                setCardsOfCart={setCardsOfCart}
+                            />
                             {cart && (
                                 <Cart
                                     cart={cart}
