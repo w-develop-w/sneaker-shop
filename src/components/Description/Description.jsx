@@ -1,15 +1,15 @@
 import styles from "./Description.module.scss"
 
-function Description() {
+function Description({dataOfCard}) {
     return (
         <div className={styles.container}>
             <div className={styles.description}>
                 <div className={styles.leftPart}>
-                    <img src="./img/4.jpg" alt="Img" />
+                    <img src={dataOfCard[0]} alt="Img" />
                 </div>
 
                 <div className={styles.rightPart}>
-                    <h2>Puma X Aka Boku Future</h2>
+                    <h2>{dataOfCard[1]}</h2>
                     <p>
                         Introducing the Puma X Aka Boku Future Cross Trainers, a
                         remarkable collaboration between Puma, a renowned
@@ -67,7 +67,7 @@ function Description() {
             </div>
 
             <div className={styles.buy}>
-                <h2>130$</h2>
+                <h2>{dataOfCard[2]}$</h2>
                 <button>BUY</button>
             </div>
         </div>

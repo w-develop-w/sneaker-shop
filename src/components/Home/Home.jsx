@@ -7,7 +7,7 @@ function filterItems(items, searchValue) {
     );
 }
 
-function Home({ cards, searchValue, cardsOfCart, setCardsOfCart, isLoading, cardsOfFavorites, setCardsOfFavorites }) {
+function Home({ cards, searchValue, cardsOfCart, setCardsOfCart, isLoading, cardsOfFavorites, setCardsOfFavorites, setDescription, setDataOfCard }) {
 	const filteredCards = filterItems(cards, searchValue);
 
     return (
@@ -25,7 +25,8 @@ function Home({ cards, searchValue, cardsOfCart, setCardsOfCart, isLoading, card
                     setCardsOfCart={setCardsOfCart}
 					setCardsOfFavorites={setCardsOfFavorites}
 					cardsOfFavorites={cardsOfFavorites}
-					
+					setDescription={setDescription}
+                    setDataOfCard={setDataOfCard}
                 />
             ))}
         </div>

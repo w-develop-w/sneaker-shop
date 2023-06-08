@@ -24,7 +24,9 @@ function App() {
     const [isLoading, setIsLoading] = useState(true)
 
     // description - состояние для отображения страницы с описанием к товару
-    const [description, setDescription] = useState(true)
+    const [description, setDescription] = useState(false)
+
+    const [dataOfCard, setDataOfCard] = useState([])
 
     useEffect(() => {
         let cartItems = localStorage.getItem("cartItems")
@@ -53,15 +55,9 @@ function App() {
 
     return (
         <div className="App">
-            <Header
-                cart={cart}
-                setCart={setCart}
-                cardsOfCart={cardsOfCart}
-                cardsOfFavorites={cardsOfFavorites}
-            />
+            {description && <Description dataOfCard={dataOfCard} />}
 
-            <Description />
-            {/* <Header
+            <Header
                 cart={cart}
                 setCart={setCart}
                 cardsOfCart={cardsOfCart}
@@ -86,6 +82,8 @@ function App() {
                                 setCardsOfCart={setCardsOfCart}
                                 setCardsOfFavorites={setCardsOfFavorites}
                                 cardsOfFavorites={cardsOfFavorites}
+                                setDescription={setDescription}
+                                setDataOfCard={setDataOfCard}
                             />
                             {cart && (
                                 <Cart
@@ -121,7 +119,7 @@ function App() {
                         </>
                     }
                 />
-            </Routes> */}
+            </Routes>
         </div>
     )
 }

@@ -13,6 +13,8 @@ function Card({
     loading,
     setCardsOfFavorites,
     cardsOfFavorites,
+    setDescription, 
+    setDataOfCard
 }) {
     const scrollToTop = () => {
         window.scrollTo({
@@ -79,7 +81,7 @@ function Card({
                 <h5>{price}$</h5>
             </div>
             <div className={styles.btnsContainer}>
-                <button className={styles.addInBuy}>Buy</button>
+                <button className={styles.addInBuy} onClick={() => {setDescription(true); setDataOfCard([url, name, price])}}>Buy</button>
                 <i
                     onClick={() => {
                         addToFavorites(cards.find((item) => item.id === id))
