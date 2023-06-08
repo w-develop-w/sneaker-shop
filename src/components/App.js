@@ -55,7 +55,6 @@ function App() {
 
     return (
         <div className="App">
-            {description && <Description dataOfCard={dataOfCard} />}
 
             <Header
                 cart={cart}
@@ -119,6 +118,19 @@ function App() {
                         </>
                     }
                 />
+
+
+                <Route
+                    path={`/${dataOfCard[1]}`}
+                    exact
+                    element={
+                        <>
+                        {description && <Description dataOfCard={dataOfCard} />}
+                        </>
+                    }
+                />
+
+                
             </Routes>
         </div>
     )

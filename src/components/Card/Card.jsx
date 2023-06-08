@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader'
+import { Link } from 'react-router-dom'
 import styles from './Card.module.scss'
-// import { useState } from 'react'
 
 function Card({
     id,
@@ -81,7 +81,9 @@ function Card({
                 <h5>{price}$</h5>
             </div>
             <div className={styles.btnsContainer}>
-                <button className={styles.addInBuy} onClick={() => {setDescription(true); setDataOfCard([url, name, price])}}>Buy</button>
+                <Link to={`/${name}`}>
+                    <button className={styles.addInBuy} onClick={() => {setDescription(true); setDataOfCard([url, name, price])}}>Buy</button>
+                </Link>
                 <i
                     onClick={() => {
                         addToFavorites(cards.find((item) => item.id === id))
