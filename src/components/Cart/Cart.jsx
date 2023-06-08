@@ -1,12 +1,11 @@
-import { useEffect } from "react"
-import axios from "axios"
-import styles from "./Cart.module.scss"
+import { useEffect } from 'react'
+import styles from './Cart.module.scss'
 
 function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
     useEffect(() => {
-        document.body.style.overflow = "hidden"
+        document.body.style.overflow = 'hidden'
         return () => {
-            document.body.style.overflow = "auto"
+            document.body.style.overflow = 'auto'
         }
     }, [])
 
@@ -16,12 +15,19 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
             const updatedCards = [...cardsOfCart]
             updatedCards.splice(index, 1)
             setCardsOfCart(updatedCards)
+
+            let cartItems = localStorage.getItem('cartItems')
+
+            if (cartItems) {
+                cartItems = JSON.parse(cartItems)
+
+                cartItems.splice(index, 1)
+
+                localStorage.setItem('cartItems', JSON.stringify(cartItems))
+            }
         }
-        axios.delete(
-            `https://6478d572362560649a2e842a.mockapi.io/cardsOfCart/${obj.id}`
-        )
     }
-    
+
     return (
         <div className={styles.container}>
             <div className={styles.cart}>
@@ -60,7 +66,7 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
                 </div>
 
                 <h3 className={styles.priceTitle}>
-                    Total:{" "}
+                    Total:{' '}
                     {cardsOfCart.reduce((acc, item) => acc + item.price, 0)}$
                 </h3>
                 <button

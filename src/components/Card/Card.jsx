@@ -1,8 +1,16 @@
-import ContentLoader from "react-content-loader"
-import axios from "axios"
-import styles from "./Card.module.scss"
+import ContentLoader from 'react-content-loader'
+import styles from './Card.module.scss'
 
-function Card({ id, name, price, url, cards, cardsOfCart, setCardsOfCart, loading }) {
+function Card({
+    id,
+    name,
+    price,
+    url,
+    cards,
+    cardsOfCart,
+    setCardsOfCart,
+    loading,
+}) {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -12,15 +20,17 @@ function Card({ id, name, price, url, cards, cardsOfCart, setCardsOfCart, loadin
 
     const addToCart = (obj) => {
         setCardsOfCart([...cardsOfCart, obj])
+        var cartItems = localStorage.getItem('cartItems')
 
-        // if(cardsOfCart.find(item => Number(item.id) === Number(obj.id))) {
-            // axios.delete(`https://6478d572362560649a2e842a.mockapi.io/cardsOfCart/${obj.id}`)
-            // setCardsOfCart(prev => prev.filter(item => Number(item.id) !== Number(obj.id)))
-        // } else {
+        if (!cartItems) {
+            cartItems = []
+        } else {
+            cartItems = JSON.parse(cartItems)
+        }
 
-            axios.post('https://6478d572362560649a2e842a.mockapi.io/cardsOfCart', obj)
-            setCardsOfCart([...cardsOfCart, obj])
-        // }
+        cartItems.push(obj)
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }
 
     return loading ? (
@@ -47,7 +57,11 @@ function Card({ id, name, price, url, cards, cardsOfCart, setCardsOfCart, loadin
                 <h5>{price}$</h5>
             </div>
             <button
-              onClick={() => {addToCart(cards.find((item) => item.id === id)); scrollToTop(); }}>
+                onClick={() => {
+                    addToCart(cards.find((item) => item.id === id))
+                    scrollToTop()
+                }}
+            >
                 Add in cart
             </button>
         </div>

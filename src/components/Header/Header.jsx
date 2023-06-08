@@ -1,6 +1,6 @@
 import styles from './Header.module.scss'
 
-function Header({ cart, setCart, cardsOfCart }) {
+function Header({ cart, setCart,cardsOfCart}) {
     return (
         <header className={styles.header}>
             <i
