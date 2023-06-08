@@ -72,6 +72,10 @@
 		animation: .2s any;
 	}
 
+    .links {
+        all:unset;
+    }
+
     i:hover {
         cursor: pointer;
 		color: rgb(202, 202, 202);
