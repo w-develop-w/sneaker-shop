@@ -1,28 +1,28 @@
-import "./App.scss"
-import React, { useState, useEffect } from "react"
-import { Route, Routes } from "react-router-dom"
-import axios from "axios"
-import Cart from "./Cart/Cart"
-import Header from "./Header/Header"
-import Home from "./Home/Home"
-import Search from "./Search/Search"
-import Favorites from "./Favorites/Favorites"
+import './App.scss'
+import React, { useState, useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Switch } from 'react-router-dom'
+import axios from 'axios'
+import Cart from './Cart/Cart'
+import Header from './Header/Header'
+import Home from './Home/Home'
+import Search from './Search/Search'
+import Favorites from './Favorites/Favorites'
 
 function App() {
     // state for render modal window
     const [cart, setCart] = useState(false)
-
     // cards - array with cards
     const [cards, setCards] = useState([])
     // cardsOfCart - array with cards for cart
     const [cardsOfCart, setCardsOfCart] = useState([])
     //  searchValue - переменная для храния данных которые ввел пользователь в поле инпут - поиск
-    const [searchValue, setSearchValue] = useState("")
+    const [searchValue, setSearchValue] = useState('')
     // в зависимости от значения  isLoading решаем показывать карточки товаров на главной или  же процесс загрузки
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        let cartItems = localStorage.getItem("cartItems")
+        let cartItems = localStorage.getItem('cartItems')
 
         if (cartItems) {
             setCardsOfCart(JSON.parse(cartItems))
@@ -32,7 +32,7 @@ function App() {
     useEffect(() => {
         async function fetachData() {
             const itemsResponse = await axios.get(
-                "https://6478d572362560649a2e842a.mockapi.io/cards"
+                'https://6478d572362560649a2e842a.mockapi.io/cards'
             )
 
             setIsLoading(false)
@@ -73,30 +73,25 @@ function App() {
                             )}
                         </>
                     }
-                ></Route>
+                />
+                <Route
+                    path="/favorites"
+                    exact
+                    element={
+                        <>
+                            <Favorites />
+                            {cart && (
+                                <Cart
+                                    cart={cart}
+                                    setCart={setCart}
+                                    cardsOfCart={cardsOfCart}
+                                    setCardsOfCart={setCardsOfCart}
+                                />
+                            )}
+                        </>
+                    }
+                />
             </Routes>
-
-            {
-                <Routes>
-                    <Route
-                        path="/favorites"
-                        exact
-                        element={
-                            <>
-                                <Favorites />
-                                {cart && (
-                                    <Cart
-                                        cart={cart}
-                                        setCart={setCart}
-                                        cardsOfCart={cardsOfCart}
-                                        setCardsOfCart={setCardsOfCart}
-                                    />
-                                )}
-                            </>
-                        }
-                    />
-                </Routes>
-            }
         </div>
     )
 }

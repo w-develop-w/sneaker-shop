@@ -16,36 +16,36 @@
         color: white;
     }
 
-	i {
-		font-size: 25px;
-		color: white;
-		transition: 0.3s;
-	}
+    i {
+        font-size: 25px;
+        color: white;
+        transition: 0.3s;
+    }
 
-	div {
-		position: relative;
-	}
+    div {
+        position: relative;
+    }
 
-	.spanForCart {
-		position: absolute;
-		padding: 1px 5px;
-		background-color: rgb(255, 149, 0);
-		border-radius: 50px;
-		font-size: 10px;
-		right: 25px;
-		bottom: 0;
-		font-weight: 500;
-		animation: .2s any;
-	}
+    .spanForCart {
+        position: absolute;
+        padding: 1px 5px;
+        background-color: rgb(255, 149, 0);
+        border-radius: 50px;
+        font-size: 10px;
+        right: 25px;
+        bottom: 0;
+        font-weight: 500;
+        animation: 0.2s any;
+    }
 
-	@keyframes any {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
+    @keyframes any {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 
     .firstIcon {
         margin-left: 30px;
@@ -55,29 +55,40 @@
         margin-right: 30px;
     }
 
-	.iconsContainer {
-		display: flex;
-		gap: 20px;
-	}
+    .iconsContainer {
+        display: flex;
+        gap: 20px;
+    }
 
-	.spanForFavorites {
-		position: absolute;
-		padding: 1px 5px;
-		background-color: rgb(255, 149, 0);
-		border-radius: 50px;
-		font-size: 10px;
-		right: -4px;
-		bottom: 0;
-		font-weight: 500;
-		animation: .2s any;
-	}
+    .iconContent {
+        position: relative;
+        &:hover {
+            cursor: pointer;
+            i {
+                cursor: pointer;
+                color: rgb(202, 202, 202);
+            }
+        }
+    }
+
+    .spanForFavorites {
+        position: absolute;
+        padding: 1px 5px;
+        background-color: rgb(255, 149, 0);
+        border-radius: 50px;
+        font-size: 10px;
+        right: -4px;
+        bottom: 0;
+        font-weight: 500;
+        animation: 0.2s any;
+    }
 
     .links {
-        all:unset;
+        all: unset;
     }
 
     i:hover {
         cursor: pointer;
-		color: rgb(202, 202, 202);
+        color: rgb(202, 202, 202);
     }
 }
