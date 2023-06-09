@@ -3,11 +3,13 @@
 .search {
     display: flex;
     justify-content: space-between;
-    width: 85%;
+    // width: 85%;
+    max-width: 1024px;
     margin: 0 auto;
     margin-top: 15px;
     position: relative;
     align-items: center;
+    padding: 0 15px;
 
     h2 {
         font-size: 27px;

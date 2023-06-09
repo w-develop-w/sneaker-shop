@@ -121,7 +121,7 @@ function App() {
 
 
                 <Route
-                    path={`/${dataOfCard[1]}`}
+                    path={`/${String(dataOfCard[1]).replace(/\s/g, '')}`}
                     exact
                     element={
                         <>

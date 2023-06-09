@@ -81,7 +81,7 @@ function Card({
                 <h5>{price}$</h5>
             </div>
             <div className={styles.btnsContainer}>
-                <Link to={`/${name}`}>
+                <Link to={`/${String(name).replace(/\s/g, '')}`}>
                     <button className={styles.addInBuy} onClick={() => {setDescription(true); setDataOfCard([url, name, price])}}>Buy</button>
                 </Link>
                 <i

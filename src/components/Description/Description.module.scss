@@ -1,97 +1,113 @@
 .container {
-    margin: 15px;
-}
-
-.description {
     margin: 0 auto;
     max-width: 1024px;
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
+    padding:0 15px;
+    
+    .containerForClose {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        
+        .iconLink {
+            text-decoration: none;
 
-    @media screen and (max-width: 800px) {
-        gap: 25px;
-    }
-
-    @media screen and (max-width: 700px) {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    @media screen and (max-width: 285px) {
-        width: 100%;
-    }
-
-    .leftPart {
-        img {
-            border-radius: 50px;
-            box-shadow: 0px 0px 22px 12px rgba(185, 190, 194, 0.17);
-            width: 400px;
-            height: 350px;
+            i {
+                font-size: 35px;
+    
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(115%);
+                    color: rgb(211, 211, 211);
+                    cursor: pointer;
+                }
+            }
         }
+    }
+    
+    .description {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
 
         @media screen and (max-width: 800px) {
-            img {
-                width: 350px;
-                height: 300px;
-            }
-
-            p {
-                height: 150px;
-            }
+            gap: 25px;
         }
-
-        @media screen and (max-width: 370px) {
-            img {
-                width: 250px;
-                height: 250px;
-            }
+        
+        @media screen and (max-width: 700px) {
+            flex-direction: column;
+            align-items: center;
         }
 
         @media screen and (max-width: 285px) {
+            width: 100%;
+        }
+
+        .leftPart {
             img {
                 border-radius: 50px;
                 box-shadow: 0px 0px 22px 12px rgba(185, 190, 194, 0.17);
-                width: 100%;
-                height: auto;
+                width: 400px;
+                height: 350px;
+
+                @media screen and (max-width: 800px) {
+                    width: 350px;
+                    height: 300px;
+                }
+
+                @media screen and (max-width: 370px) {
+                    width: 250px;
+                    height: 250px;
+                }
+
+                @media screen and (max-width: 285px) {
+                    border-radius: 50px;
+                    box-shadow: 0px 0px 22px 12px rgba(185, 190, 194, 0.17);
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        .rightPart {
+            p {
+                height: 250px;
+                overflow: auto;
+                max-width: 550px;
+
+                @media screen and (max-width: 800px) {
+                    height: 170px;
+                }
             }
         }
     }
 
-    .rightPart {
-        p {
-            height: 250px;
-            overflow: auto;
+    .buy {
+        max-width: 1024px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+        margin-top: 50px;
+
+        @media screen and (max-width: 700px) {
             max-width: 550px;
         }
 
-        @media screen and (max-width: 800px) {
-            p {
-                height: 170px;
+        button {
+            height: 40px;
+            border-radius: 20px;
+            padding: 0px 35px;
+            background-color: rgb(87, 87, 151);
+            color: white;
+            border: none;
+            
+            &:hover {
+                background-color: white;
+                color: rgb(87, 87, 151);
+                outline: 1px solid rgb(87, 87, 151);
+                cursor: pointer;
             }
         }
-    }
-}
-
-.buy {
-    max-width: 1024px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-    margin-top: 50px;
-
-    @media screen and (max-width: 700px) {
-        max-width: 550px;
-    }
-
-    button {
-        height: 40px;
-        border-radius: 20px;
-        padding: 0px 35px;
-        background-color: rgb(87, 87, 151);
-        color: white;
-        border: none;
     }
 }
