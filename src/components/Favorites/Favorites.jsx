@@ -1,5 +1,6 @@
-import styles from './Favorites.module.scss'
-import stylesCard from '../Card/Card.module.scss'
+import { Link } from "react-router-dom"
+import styles from "./Favorites.module.scss"
+import stylesCard from "../Card/Card.module.scss"
 
 function Favorites({
     cards,
@@ -7,19 +8,21 @@ function Favorites({
     cardsOfFavorites,
     cardsOfCart,
     setCardsOfCart,
+    setDataOfCard, 
+    setDescription
 }) {
-    document.body.style.overflowY = 'scroll'
+    document.body.style.overflowY = "scroll"
 
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth',
+            behavior: "smooth",
         })
     }
 
     const addToCart = (obj) => {
         setCardsOfCart([...cardsOfCart, obj])
-        var cartItems = localStorage.getItem('cartItems')
+        var cartItems = localStorage.getItem("cartItems")
 
         if (!cartItems) {
             cartItems = []
@@ -29,7 +32,7 @@ function Favorites({
 
         cartItems.push(obj)
 
-        localStorage.setItem('cartItems', JSON.stringify(cartItems))
+        localStorage.setItem("cartItems", JSON.stringify(cartItems))
     }
 
     const delFromFavorites = (obj) => {
@@ -40,7 +43,7 @@ function Favorites({
             setCardsOfFavorites(updatedCardsOfFavorites)
         }
 
-        let favoritesItems = localStorage.getItem('favoritesItems')
+        let favoritesItems = localStorage.getItem("favoritesItems")
 
         if (favoritesItems) {
             favoritesItems = JSON.parse(favoritesItems)
@@ -48,7 +51,7 @@ function Favorites({
             favoritesItems.splice(index, 1)
 
             localStorage.setItem(
-                'favoritesItems',
+                "favoritesItems",
                 JSON.stringify(favoritesItems)
             )
         }
@@ -63,7 +66,7 @@ function Favorites({
                     onClick={() => {
                         setCardsOfFavorites([])
                         localStorage.setItem(
-                            'favoritesItems',
+                            "favoritesItems",
                             JSON.stringify([])
                         )
                     }}
@@ -83,7 +86,18 @@ function Favorites({
                             <h5>{item.price}$</h5>
                         </div>
                         <div className={stylesCard.btnsContainer}>
-                            <button className={stylesCard.addInBuy}>Buy</button>
+                            {/* <button className={stylesCard.addInBuy}>Buy</button> */}
+                            <Link to={`/${String(item.name).replace(/\s/g, "")}`} >
+                                <button
+                                    className={stylesCard.addInBuy}
+                                    onClick={() => {
+                                        setDescription(true)
+                                        setDataOfCard([item.url, item.name, item.price])
+                                    }}
+                                >
+                                    Buy
+                                </button>
+                            </Link>
                             <i
                                 onClick={() => {
                                     delFromFavorites(item)

@@ -36,14 +36,13 @@
         margin: 0;
     }
 
-	.btnsContainer {
-		margin-top: 10px;
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-end;
-		gap: 10px;
-	}
-
+    .btnsContainer {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 10px;
+    }
 
     .addInBuy {
         // margin-top: 10px;
@@ -65,23 +64,23 @@
         }
     }
 
-	.addInFavorite {
-		font-size: 25px;
+    .addInFavorite {
+        font-size: 25px;
         transition: 0.3s;
-		color: rgb(87, 87, 151);
-		&:hover {
-			cursor: pointer;
-			color: rgb(255, 39, 75);
-		}
-	}
+        color: rgb(87, 87, 151);
+        &:hover {
+            cursor: pointer;
+            color: rgb(255, 39, 75);
+        }
+    }
 
-	.addInCart {
-		font-size: 25px;
+    .addInCart {
+        font-size: 25px;
         transition: 0.3s;
-		color: rgb(87, 87, 151);
-		&:hover {
-			cursor: pointer;
-			color: rgb(156, 158, 12);
-		}
-	}
+        color: rgb(87, 87, 151);
+        &:hover {
+            cursor: pointer;
+            color: rgb(156, 158, 12);
+        }
+    }
 }

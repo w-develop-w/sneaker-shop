@@ -106,6 +106,8 @@ function App() {
                                 setCardsOfFavorites={setCardsOfFavorites}
                                 cardsOfCart={cardsOfCart}
                                 setCardsOfCart={setCardsOfCart}
+                                setDataOfCard={setDataOfCard}
+                                setDescription={setDescription}
                             />
                             {cart && (
                                 <Cart

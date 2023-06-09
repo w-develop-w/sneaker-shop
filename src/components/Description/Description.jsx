@@ -42,7 +42,7 @@ function Description({ dataOfCard }) {
 
       <div className={styles.buy}>
         <h2>{dataOfCard[2]}$</h2>
-        <button>BUY</button>
+        <button>ORDER</button>
       </div>
     </div>
   );

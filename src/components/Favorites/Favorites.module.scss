@@ -1,18 +1,20 @@
 .container {
-	margin: 0 auto;
-	width: 85%;
+    margin: 0 auto;
+	// width: 85%;
+    max-width: 1200px;
 	
 	h2 {
-		font-size: 27px;
+        font-size: 27px;
 		padding-top: 15px;
 	}
-
+    
 	div {
-		
-		display: flex;
+        margin: 0 auto;
+        max-width: 1024px;
+        display: flex;
 		justify-content: space-between;
 		align-items: center;
-
+        // padding: 15px;
 		.clearAll {
 			all: unset;
 			font-size: 18px;
@@ -37,7 +39,8 @@
 		align-items: center;
 		gap: 35px;
 		margin: 0 auto;
-		width: 85%;
+        max-width: 1200px;
+		// width: 85%;
 		margin-top: 20px;
 		padding: 0 15px;
 		margin-bottom: 30px;
