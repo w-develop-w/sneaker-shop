@@ -22,7 +22,7 @@ function App() {
     const [searchValue, setSearchValue] = useState("")
     // в зависимости от значения  isLoading решаем показывать карточки товаров на главной или  же процесс загрузки
     const [isLoading, setIsLoading] = useState(true)
-
+	
     // description - состояние для отображения страницы с описанием к товару
     const [description, setDescription] = useState(false)
 
@@ -128,6 +128,14 @@ function App() {
                     element={
                         <>
                         {description && <Description dataOfCard={dataOfCard} />}
+						{cart && (
+                                <Cart
+                                    cart={cart}
+                                    setCart={setCart}
+                                    cardsOfCart={cardsOfCart}
+                                    setCardsOfCart={setCardsOfCart}
+                                />
+                            )}
                         </>
                     }
                 />
