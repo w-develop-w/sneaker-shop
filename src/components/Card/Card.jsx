@@ -1,6 +1,7 @@
 import ContentLoader from 'react-content-loader'
 import { Link } from 'react-router-dom'
 import styles from './Card.module.scss'
+import { useEffect } from 'react'
 
 function Card({
     id,
@@ -13,7 +14,8 @@ function Card({
     loading,
     setCardsOfFavorites,
     cardsOfFavorites,
-    setDataForDescription
+    setDataForDescription,
+    dataForDescription,
 }) {
     const scrollToTop = () => {
         window.scrollTo({
@@ -37,24 +39,41 @@ function Card({
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }
 
-	const addToFavorites = (obj) => {
-		if (cardsOfFavorites.some((item) => item.id === obj.id)) {
-			return; 
-		}
-	
-		setCardsOfFavorites([...cardsOfFavorites, obj]);
-		var favoritesItems = localStorage.getItem('favoritesItems');
-	
-		if (!favoritesItems) {
-			favoritesItems = [];
-		} else {
-			favoritesItems = JSON.parse(favoritesItems);
-		}
-	
-		favoritesItems.push(obj);
-	
-		localStorage.setItem('favoritesItems', JSON.stringify(favoritesItems));
-	}
+    const addToFavorites = (obj) => {
+        if (cardsOfFavorites.some((item) => item.id === obj.id)) {
+            return
+        }
+
+        setCardsOfFavorites([...cardsOfFavorites, obj])
+        var favoritesItems = localStorage.getItem('favoritesItems')
+
+        if (!favoritesItems) {
+            favoritesItems = []
+        } else {
+            favoritesItems = JSON.parse(favoritesItems)
+        }
+
+        favoritesItems.push(obj)
+
+        localStorage.setItem('favoritesItems', JSON.stringify(favoritesItems))
+    }
+
+    const setDataDescToLocal = (url, name, price) => {
+        const updatedData = [url, name, price]
+        setDataForDescription(updatedData)
+        localStorage.setItem('dataForDescription', JSON.stringify(updatedData))
+    }
+
+    useEffect(() => {
+        const storedData = localStorage.getItem('dataForDescription')
+        if (storedData) {
+            setDataForDescription(JSON.parse(storedData))
+        }
+    }, [])
+
+    useEffect(() => {
+        console.log(dataForDescription)
+    }, [dataForDescription])
 
     return loading ? (
         <div className={styles.card}>
@@ -80,8 +99,16 @@ function Card({
                 <h5>{price}$</h5>
             </div>
             <div className={styles.btnsContainer}>
-                <Link to={`/${String(name).replace(/\s/g, '')}`}>
-                    <button className={styles.addInBuy} onClick={() => { setDataForDescription([url, name, price])}}>Buy</button>
+                {/* <Link to={`/${String(name).replace(/\s/g, '')}`}> */}
+				<Link to="/about">
+                    <button
+                        className={styles.addInBuy}
+                        onClick={() => {
+                            setDataDescToLocal(url, name, price)
+                        }}
+                    >
+                        Buy
+                    </button>
                 </Link>
                 <i
                     onClick={() => {

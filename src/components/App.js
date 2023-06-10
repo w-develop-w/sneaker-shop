@@ -79,6 +79,7 @@ function App() {
                                 setCardsOfFavorites={setCardsOfFavorites}
                                 cardsOfFavorites={cardsOfFavorites}
                                 setDataForDescription={setDataForDescription}
+                                dataForDescription={dataForDescription}
                             />
                             {cart && (
                                 <Cart
@@ -102,7 +103,7 @@ function App() {
                                 setCardsOfFavorites={setCardsOfFavorites}
                                 cardsOfCart={cardsOfCart}
                                 setCardsOfCart={setCardsOfCart}
-                                // setDataForDescription={setDataForDescription}
+								setDataForDescription={setDataForDescription}
                             />
                             {cart && (
                                 <Cart
@@ -117,10 +118,11 @@ function App() {
                 />
 
                 <Route
-                    path={`/${String(dataForDescription[1]).replace(
-                        /\s/g,
-                        ''
-                    )}`}
+                    // path={`/${String(dataForDescription[1]).replace(
+                    //     /\s/g,
+                    //     ''
+                    // )}`}
+					path="/about"
                     exact
                     element={
                         <>
