@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import styles from "./Description.module.scss";
 
-function Description({ dataOfCard }) {
+function Description({ dataForDescription }) {
+   
   return (
     <div className={styles.container}>
       <div className={styles.containerForClose}>
@@ -13,12 +14,12 @@ function Description({ dataOfCard }) {
       <div className={styles.description}>
         <div className={styles.leftPart}>
           <div className={styles.imageWrapper}>
-            <img src={dataOfCard[0]} alt="Img" />
+            <img src={dataForDescription[0]} alt="Img" />
           </div>
         </div>
 
         <div className={styles.rightPart}>
-          <h2>{dataOfCard[1]}</h2>
+          <h2>{dataForDescription[1]}</h2>
           <p>
             Introducing the Puma X Aka Boku Future Cross Trainers, a remarkable collaboration between Puma, a renowned sportswear brand, and Aka Boku, a celebrated Japanese artist known for his vibrant and imaginative designs. These sneakers seamlessly blend innovative technology, comfort, and artistic flair to create a truly unique and eye-catching footwear experience.
             <br />
@@ -41,7 +42,7 @@ function Description({ dataOfCard }) {
       </div>
 
       <div className={styles.buy}>
-        <h2>{dataOfCard[2]}$</h2>
+        <h2>{dataForDescription[2]}$</h2>
         <button>ORDER</button>
       </div>
     </div>

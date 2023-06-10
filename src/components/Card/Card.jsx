@@ -13,8 +13,7 @@ function Card({
     loading,
     setCardsOfFavorites,
     cardsOfFavorites,
-    setDescription, 
-    setDataOfCard
+    setDataForDescription
 }) {
     const scrollToTop = () => {
         window.scrollTo({
@@ -82,7 +81,7 @@ function Card({
             </div>
             <div className={styles.btnsContainer}>
                 <Link to={`/${String(name).replace(/\s/g, '')}`}>
-                    <button className={styles.addInBuy} onClick={() => {setDescription(true); setDataOfCard([url, name, price])}}>Buy</button>
+                    <button className={styles.addInBuy} onClick={() => { setDataForDescription([url, name, price])}}>Buy</button>
                 </Link>
                 <i
                     onClick={() => {

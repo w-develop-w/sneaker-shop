@@ -1,13 +1,13 @@
-import "./App.scss"
-import React, { useState, useEffect } from "react"
-import { Route, Routes } from "react-router-dom"
-import axios from "axios"
-import Cart from "./Cart/Cart"
-import Header from "./Header/Header"
-import Home from "./Home/Home"
-import Search from "./Search/Search"
-import Favorites from "./Favorites/Favorites"
-import Description from "./Description/Description"
+import './App.scss'
+import React, { useState, useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import axios from 'axios'
+import Cart from './Cart/Cart'
+import Header from './Header/Header'
+import Home from './Home/Home'
+import Search from './Search/Search'
+import Favorites from './Favorites/Favorites'
+import Description from './Description/Description'
 
 function App() {
     // state for render modal window
@@ -19,18 +19,16 @@ function App() {
 
     const [cardsOfFavorites, setCardsOfFavorites] = useState([])
     //  searchValue - переменная для храния данных которые ввел пользователь в поле инпут - поиск
-    const [searchValue, setSearchValue] = useState("")
+    const [searchValue, setSearchValue] = useState('')
     // в зависимости от значения  isLoading решаем показывать карточки товаров на главной или  же процесс загрузки
     const [isLoading, setIsLoading] = useState(true)
-	
     // description - состояние для отображения страницы с описанием к товару
-    const [description, setDescription] = useState(false)
 
-    const [dataOfCard, setDataOfCard] = useState([])
+    const [dataForDescription, setDataForDescription] = useState([])
 
     useEffect(() => {
-        let cartItems = localStorage.getItem("cartItems")
-        let favoritesItems = localStorage.getItem("favoritesItems")
+        let cartItems = localStorage.getItem('cartItems')
+        let favoritesItems = localStorage.getItem('favoritesItems')
         if (favoritesItems) {
             setCardsOfFavorites(JSON.parse(favoritesItems))
         }
@@ -43,7 +41,7 @@ function App() {
     useEffect(() => {
         async function fetachData() {
             const itemsResponse = await axios.get(
-                "https://6478d572362560649a2e842a.mockapi.io/cards"
+                'https://6478d572362560649a2e842a.mockapi.io/cards'
             )
 
             setIsLoading(false)
@@ -55,7 +53,6 @@ function App() {
 
     return (
         <div className="App">
-
             <Header
                 cart={cart}
                 setCart={setCart}
@@ -81,8 +78,7 @@ function App() {
                                 setCardsOfCart={setCardsOfCart}
                                 setCardsOfFavorites={setCardsOfFavorites}
                                 cardsOfFavorites={cardsOfFavorites}
-                                setDescription={setDescription}
-                                setDataOfCard={setDataOfCard}
+                                setDataForDescription={setDataForDescription}
                             />
                             {cart && (
                                 <Cart
@@ -106,8 +102,7 @@ function App() {
                                 setCardsOfFavorites={setCardsOfFavorites}
                                 cardsOfCart={cardsOfCart}
                                 setCardsOfCart={setCardsOfCart}
-                                setDataOfCard={setDataOfCard}
-                                setDescription={setDescription}
+                                // setDataForDescription={setDataForDescription}
                             />
                             {cart && (
                                 <Cart
@@ -121,14 +116,20 @@ function App() {
                     }
                 />
 
-
                 <Route
-                    path={`/${String(dataOfCard[1]).replace(/\s/g, '')}`}
+                    path={`/${String(dataForDescription[1]).replace(
+                        /\s/g,
+                        ''
+                    )}`}
                     exact
                     element={
                         <>
-                        {description && <Description dataOfCard={dataOfCard} />}
-						{cart && (
+                            {
+                                <Description
+                                    dataForDescription={dataForDescription}
+                                />
+                            }
+                            {cart && (
                                 <Cart
                                     cart={cart}
                                     setCart={setCart}
@@ -139,8 +140,6 @@ function App() {
                         </>
                     }
                 />
-
-                
             </Routes>
         </div>
     )
