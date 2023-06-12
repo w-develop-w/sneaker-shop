@@ -8,6 +8,7 @@ import Home from "./Home/Home"
 import Search from "./Search/Search"
 import Favorites from "./Favorites/Favorites"
 import Description from "./Description/Description"
+import OrderFromDescription from "./OrderFromDescription/OrderFromDescription"
 
 function App() {
     // state for render modal window
@@ -26,6 +27,7 @@ function App() {
     // description - состояние для отображения страницы с описанием к товару
     const [description, setDescription] = useState(false)
 
+    // Данные для страницы описания 
     const [dataOfCard, setDataOfCard] = useState([])
 
     useEffect(() => {
@@ -136,6 +138,17 @@ function App() {
                                     setCardsOfCart={setCardsOfCart}
                                 />
                             )}
+                        </>
+                    }
+                />
+
+
+                <Route
+                    path="/order"
+                    exact
+                    element={
+                        <>
+                            <OrderFromDescription dataOfCard={dataOfCard[1]} />
                         </>
                     }
                 />
