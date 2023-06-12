@@ -127,6 +127,11 @@ function App() {
                                 setDataOfCard={setDataOfCard}
                                 setDescription={setDescription}
 								setDataForDescription={setDataForDescription}
+                                searchValue={searchValue}
+                                isLoading={isLoading}
+                                dataForDescription={dataForDescription}
+								filters={filters}
+								selectedOption={selectedOption}
                             />
                             {cart && (
                                 <Cart
