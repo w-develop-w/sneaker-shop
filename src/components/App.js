@@ -8,8 +8,9 @@ import Home from "./Home/Home"
 import Search from "./Search/Search"
 import Favorites from "./Favorites/Favorites"
 import Description from "./Description/Description"
-import Filters from './Filters/Filters'
+import Filters from "./Filters/Filters"
 import OrderFromDescription from "./OrderFromDescription/OrderFromDescription"
+import Thanks from "./Thanks/Thanks"
 
 function App() {
     // state for render modal window
@@ -21,7 +22,7 @@ function App() {
 
     const [cardsOfFavorites, setCardsOfFavorites] = useState([])
     //  searchValue - переменная для храния данных которые ввел пользователь в поле инпут - поиск
-    const [searchValue, setSearchValue] = useState('')
+    const [searchValue, setSearchValue] = useState("")
     // в зависимости от значения  isLoading решаем показывать карточки товаров на главной или  же процесс загрузки
     const [isLoading, setIsLoading] = useState(true)
     // description - состояние для отображения страницы с описанием к товару
@@ -30,18 +31,21 @@ function App() {
 
     const [dataForDescription, setDataForDescription] = useState([])
     // filters - состояние для получения текстового значения кнопки фильтра
-    const [filters, setFilters] = useState('')
+    const [filters, setFilters] = useState("")
 
-	const [selectedOption, setSelectedOption] = useState('')
+    const [selectedOption, setSelectedOption] = useState("")
 
     const [dataOfCard, setDataOfCard] = useState([])
 
-    // Состояние для определения - какая именно кнопка заказа - из описаниея или из корзины 
-    const [order, setOrder] = useState('')
+    // Состояние для определения - какая именно кнопка заказа - из описаниея или из корзины
+    const [order, setOrder] = useState("")
+
+    // Состояние - открыта или закрыто модальное окно благодарности 
+    const [thanks, setThanks] = useState(false)
 
     useEffect(() => {
-        let cartItems = localStorage.getItem('cartItems')
-        let favoritesItems = localStorage.getItem('favoritesItems')
+        let cartItems = localStorage.getItem("cartItems")
+        let favoritesItems = localStorage.getItem("favoritesItems")
         if (favoritesItems) {
             setCardsOfFavorites(JSON.parse(favoritesItems))
         }
@@ -49,13 +53,12 @@ function App() {
         if (cartItems) {
             setCardsOfCart(JSON.parse(cartItems))
         }
-
     }, [])
 
     useEffect(() => {
         async function fetachData() {
             const itemsResponse = await axios.get(
-                'https://6478d572362560649a2e842a.mockapi.io/cards'
+                "https://6478d572362560649a2e842a.mockapi.io/cards"
             )
 
             setIsLoading(false)
@@ -67,6 +70,7 @@ function App() {
 
     return (
         <div className="App">
+    
             <Header
                 cart={cart}
                 setCart={setCart}
@@ -172,7 +176,7 @@ function App() {
                     exact
                     element={
                         <>
-                            <OrderFromDescription cardsOfCart={cardsOfCart} order={order} dataForDescription={dataForDescription} />
+                            <OrderFromDescription cardsOfCart={cardsOfCart} order={order} dataForDescription={dataForDescription} setThanks={setThanks} />
                             {cart && (
                                 <Cart
                                     cart={cart}
@@ -185,9 +189,12 @@ function App() {
                         </>
                     }
                 />
-
-                
             </Routes>
+            
+            {
+               thanks && <Thanks setThanks={setThanks}/>
+
+            }
         </div>
     )
 }
