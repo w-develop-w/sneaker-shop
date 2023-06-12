@@ -168,7 +168,7 @@ function App() {
                     exact
                     element={
                         <>
-                            <OrderFromDescription dataOfCard={dataOfCard[1]} cardsOfCart={cardsOfCart} order={order} />
+                            <OrderFromDescription cardsOfCart={cardsOfCart} order={order} dataForDescription={dataForDescription} />
                             {cart && (
                                 <Cart
                                     cart={cart}

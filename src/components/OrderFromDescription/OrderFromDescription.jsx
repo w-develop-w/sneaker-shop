@@ -29,11 +29,11 @@ const sendEmail = (formData) => {
         )
 }
 
-function OrderFromDescription({ dataOfCard, cardsOfCart, order }) {
+function OrderFromDescription({ cardsOfCart, order, dataForDescription }) {
     const arrChoiceCart = cardsOfCart.map((obj) => obj.name)
     const  strChoiceCart = arrChoiceCart.join(", ")
 
-    const [choice, setChoice] = useState(dataOfCard)
+    const [choice, setChoice] = useState(dataForDescription[1])
     const [size, setSize] = useState("")
     const [userName, setUserName] = useState("")
     const [surname, setSurname] = useState("")
@@ -62,7 +62,7 @@ function OrderFromDescription({ dataOfCard, cardsOfCart, order }) {
                     name="choice"
                     value={order === "description" ? choice : strChoiceCart}
                     onChange={(e) => setChoice(e.target.value)}
-                    placeholder={dataOfCard}
+                    placeholder={dataForDescription[1]}
                 />
                 <select
                     name="size"
