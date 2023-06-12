@@ -1,5 +1,11 @@
 @use '../../index.scss' as index;
 
+div {
+
+h2 {
+	text-align: center;
+}
+	
 .home {
     display: flex;
     flex-wrap: wrap;
@@ -8,8 +14,10 @@
     gap: 35px;
     margin: 0 auto;
     width: 85%;
-    margin-top: 20px;
+    margin-top: 40px;
     padding: 0 15px;
     margin-bottom: 30px;
     max-width: 1200px;
 }
+}
+

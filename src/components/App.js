@@ -8,6 +8,7 @@ import Home from './Home/Home'
 import Search from './Search/Search'
 import Favorites from './Favorites/Favorites'
 import Description from './Description/Description'
+import Filters from './Filters/Filters'
 
 function App() {
     // state for render modal window
@@ -25,6 +26,9 @@ function App() {
     // description - состояние для отображения страницы с описанием к товару
 
     const [dataForDescription, setDataForDescription] = useState([])
+
+	const [filters, setFilters] = useState('')
+
 
     useEffect(() => {
         let cartItems = localStorage.getItem('cartItems')
@@ -66,6 +70,7 @@ function App() {
                     exact
                     element={
                         <>
+							<Filters setFilters={setFilters}/>
                             <Search
                                 searchValue={searchValue}
                                 setSearchValue={setSearchValue}
@@ -80,6 +85,7 @@ function App() {
                                 cardsOfFavorites={cardsOfFavorites}
                                 setDataForDescription={setDataForDescription}
                                 dataForDescription={dataForDescription}
+								filters={filters}
                             />
                             {cart && (
                                 <Cart

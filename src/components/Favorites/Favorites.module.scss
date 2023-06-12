@@ -1,6 +1,7 @@
+@use '../../index.scss' as index;
+
 .container {
     margin: 0 auto;
-	// width: 85%;
     max-width: 1200px;
 	
 	h2 {
@@ -14,18 +15,18 @@
         display: flex;
 		justify-content: space-between;
 		align-items: center;
-        // padding: 15px;
+
 		.clearAll {
 			all: unset;
 			font-size: 18px;
-			border: 1px solid rgb(87, 87, 151);
+			border: 1px solid index.$base-color;
 			border-radius: 20px;
 			padding: 3px 10px;
 			transition: .3s;
 
 			&:hover {
 				cursor: pointer;
-				background-color: rgb(87, 87, 151);
+				background-color:index.$base-color;
 				color: white;
 			}
 		}
@@ -40,11 +41,9 @@
 		gap: 35px;
 		margin: 0 auto;
         max-width: 1200px;
-		// width: 85%;
 		margin-top: 20px;
 		padding: 0 15px;
 		margin-bottom: 30px;
-		// border: 1px solid black;
 	}
 }
 
