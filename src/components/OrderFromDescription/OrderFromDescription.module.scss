@@ -1,4 +1,4 @@
-@use "../../index.scss" as index;
+@use '../../index.scss' as index;
 
 .container {
     max-width: 768px;
@@ -24,7 +24,6 @@
     input {
         all: unset;
         padding: 10px 20px;
-        // border: 2px solid index.$base-color;
         border: 2px solid var(--base-color);
         border-radius: 30px;
         margin-bottom: 20px;
@@ -33,7 +32,6 @@
     select {
         all: unset;
         padding: 10px 20px;
-        // border: 2px solid index.$base-color;
         border: 2px solid var(--base-color);
         color: black;
         border-radius: 30px;
@@ -41,11 +39,10 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        background-image: url("../../../public/img/arrow-down.png"); /* Путь к вашему изображению стрелочки */
+        background-image: url('../../../public/img/arrow-down.png'); /* Путь к вашему изображению стрелочки */
         background-repeat: no-repeat;
         background-position: 98% center;
     }
-
 
     div {
         display: flex;
@@ -54,19 +51,18 @@
         button {
             all: unset;
             color: white;
-            // background-color: index.$base-color;
             background-color: var(--base-color);
             border-radius: 30px;
             max-width: 200px;
             padding: 15px 35px;
             margin-top: 20px;
             font-weight: 500;
+            transition: 0.3s;
 
             &:hover {
+                cursor: pointer;
                 background-color: white;
-                // border: 2px solid index.$base-color;
-                border: 2px solid var(--base-color);
-                // color: index.$base-color;
+                outline: 1px solid var(--base-color);
                 color: var(--base-color);
             }
         }

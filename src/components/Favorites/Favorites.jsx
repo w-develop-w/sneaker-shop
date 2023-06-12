@@ -13,6 +13,8 @@ function Favorites({
     selectedOption,
     setDescription,
 }) {
+	document.body.style.overflowY = 'scroll'
+
     return (
         <div className={styles.container}>
             <div className={styles.containerDiv}>

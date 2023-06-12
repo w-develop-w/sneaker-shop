@@ -18,22 +18,18 @@
 
     .colorPickerLabel {
         position: relative;
-
+		
         i {
             position: absolute;
             top: 50%;
-            right: 10px;
+            right: -13px;
             transform: translateY(-50%);
             z-index: 1;
-
         }
 
         input {
-            padding-left: 25px;
-            height: 1px;
-            width: 1px;
-            background-color: var(--base-color);
-            border: var(--base-color);
+			all: unset;
+			display: block;
         }
     }
 

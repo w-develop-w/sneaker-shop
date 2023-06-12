@@ -44,34 +44,39 @@ function Card({
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }
 
-	const addToFavorites = (obj) => {
-		const isItemInFavorites = cardsOfFavorites.some((item) => item.id === obj.id);
-	  
-		if (isItemInFavorites) {
-		  const updatedFavorites = cardsOfFavorites.filter((item) => item.id !== obj.id);
-		  setCardsOfFavorites(updatedFavorites);
-		} else {
-		  setCardsOfFavorites([...cardsOfFavorites, obj]);
-		}
-	  
-		let favoritesItems = localStorage.getItem('favoritesItems');
-	  
-		if (!favoritesItems) {
-		  favoritesItems = [];
-		} else {
-		  favoritesItems = JSON.parse(favoritesItems);
-		}
-	  
-		if (isItemInFavorites) {
-		  const updatedFavoritesItems = favoritesItems.filter((item) => item.id !== obj.id);
-		  favoritesItems = updatedFavoritesItems;
-		} else {
-		  favoritesItems.push(obj);
-		}
-	  
-		localStorage.setItem('favoritesItems', JSON.stringify(favoritesItems));
-	  };
-	  
+    const addToFavorites = (obj) => {
+        const isItemInFavorites = cardsOfFavorites.some(
+            (item) => item.id === obj.id
+        )
+
+        if (isItemInFavorites) {
+            const updatedFavorites = cardsOfFavorites.filter(
+                (item) => item.id !== obj.id
+            )
+            setCardsOfFavorites(updatedFavorites)
+        } else {
+            setCardsOfFavorites([...cardsOfFavorites, obj])
+        }
+
+        let favoritesItems = localStorage.getItem('favoritesItems')
+
+        if (!favoritesItems) {
+            favoritesItems = []
+        } else {
+            favoritesItems = JSON.parse(favoritesItems)
+        }
+
+        if (isItemInFavorites) {
+            const updatedFavoritesItems = favoritesItems.filter(
+                (item) => item.id !== obj.id
+            )
+            favoritesItems = updatedFavoritesItems
+        } else {
+            favoritesItems.push(obj)
+        }
+
+        localStorage.setItem('favoritesItems', JSON.stringify(favoritesItems))
+    }
 
     const setDataDescToLocal = (url, name, price) => {
         const updatedData = [url, name, price]
@@ -84,7 +89,7 @@ function Card({
         if (storedData) {
             setDataForDescription(JSON.parse(storedData))
         }
-    }, [])
+    }, [setDataForDescription])
 
     useEffect(() => {}, [dataForDescription])
 
@@ -106,9 +111,7 @@ function Card({
                             currencyValue.data.rates[selectedOption]
                         )
                     }
-                } catch (error) {
-                   
-                }
+                } catch (error) {}
             }
         }
 
@@ -141,7 +144,8 @@ function Card({
             <h4>{name}</h4>
             <div>
                 <span>
-                    <strong>{currencyPrice}</strong> {selectedOption === '' ? 'USD' : `${selectedOption}`}
+                    <strong>{currencyPrice}</strong>{' '}
+                    {selectedOption === '' ? 'USD' : `${selectedOption}`}
                 </span>
             </div>
             <div className={styles.btnsContainer}>
@@ -159,8 +163,8 @@ function Card({
                 </Link>
                 <i
                     onClick={() => {
-							addToFavorites(cards.find((item) => item.id === id))
-							scrollToTop()
+                        addToFavorites(cards.find((item) => item.id === id))
+                        scrollToTop()
                     }}
                     className={`ri-heart-2-fill ${styles.addInFavorite}`}
                 ></i>
