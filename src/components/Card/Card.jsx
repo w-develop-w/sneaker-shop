@@ -131,7 +131,9 @@ function Card({
             <img src={url} alt="" />
             <h4>{name}</h4>
             <div>
-                <h5>{currencyPrice}</h5>
+                <span>
+                    <strong>{currencyPrice}</strong> {selectedOption}
+                </span>
             </div>
             <div className={styles.btnsContainer}>
                 {/* <Link to={`/${String(name).replace(/\s/g, '')}`}> */}

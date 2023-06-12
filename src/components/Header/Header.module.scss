@@ -70,6 +70,11 @@
 			font-size: 19px;
 			color: white;
 			font-weight: 600;
+			transition: .3s;
+
+			&:hover {
+				cursor: pointer;
+			}
 		}
     }
 
@@ -104,4 +109,13 @@
         cursor: pointer;
         color: rgb(202, 202, 202);
     }
+}
+
+@media screen and (max-width: 767px) {
+	.header {
+		height: 75px;
+		h2 {
+			display: none;
+		}
+	}
 }
