@@ -24,11 +24,11 @@ function App() {
     // в зависимости от значения  isLoading решаем показывать карточки товаров на главной или  же процесс загрузки
     const [isLoading, setIsLoading] = useState(true)
     // description - состояние для отображения страницы с описанием к товару
-
     const [dataForDescription, setDataForDescription] = useState([])
+    // filters - состояние для получения текстового значения кнопки фильтра
+    const [filters, setFilters] = useState('')
 
-	const [filters, setFilters] = useState('')
-
+    const [selectedOption, setSelectedOption] = useState('')
 
     useEffect(() => {
         let cartItems = localStorage.getItem('cartItems')
@@ -55,6 +55,7 @@ function App() {
         fetachData()
     }, [])
 
+
     return (
         <div className="App">
             <Header
@@ -62,6 +63,8 @@ function App() {
                 setCart={setCart}
                 cardsOfCart={cardsOfCart}
                 cardsOfFavorites={cardsOfFavorites}
+				selectedOption={selectedOption}
+				setSelectedOption={setSelectedOption}
             />
 
             <Routes>
@@ -70,7 +73,7 @@ function App() {
                     exact
                     element={
                         <>
-							<Filters setFilters={setFilters}/>
+                            <Filters setFilters={setFilters} />
                             <Search
                                 searchValue={searchValue}
                                 setSearchValue={setSearchValue}
@@ -85,7 +88,8 @@ function App() {
                                 cardsOfFavorites={cardsOfFavorites}
                                 setDataForDescription={setDataForDescription}
                                 dataForDescription={dataForDescription}
-								filters={filters}
+                                filters={filters}
+								selectedOption={selectedOption}
                             />
                             {cart && (
                                 <Cart
@@ -109,7 +113,7 @@ function App() {
                                 setCardsOfFavorites={setCardsOfFavorites}
                                 cardsOfCart={cardsOfCart}
                                 setCardsOfCart={setCardsOfCart}
-								setDataForDescription={setDataForDescription}
+                                setDataForDescription={setDataForDescription}
                             />
                             {cart && (
                                 <Cart
@@ -128,7 +132,7 @@ function App() {
                     //     /\s/g,
                     //     ''
                     // )}`}
-					path="/about"
+                    path="/about"
                     exact
                     element={
                         <>

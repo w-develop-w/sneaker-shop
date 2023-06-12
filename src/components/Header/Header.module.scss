@@ -62,6 +62,15 @@
     .iconsContainer {
         display: flex;
         gap: 20px;
+
+		select {
+			all: unset;
+			background-color: index.$base-color;
+			border: none;
+			font-size: 19px;
+			color: white;
+			font-weight: 600;
+		}
     }
 
     .iconContent {

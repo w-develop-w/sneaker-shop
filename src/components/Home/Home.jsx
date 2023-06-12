@@ -17,7 +17,8 @@ function Home({
     setCardsOfFavorites,
     setDataForDescription,
     dataForDescription,
-	filters
+	filters,
+	selectedOption,
 }) {
     const filteredCards = filterItems(cards, getCurrentValueSearch(searchValue, filters))
 
@@ -49,6 +50,7 @@ function Home({
                             cardsOfFavorites={cardsOfFavorites}
                             setDataForDescription={setDataForDescription}
                             dataForDescription={dataForDescription}
+							selectedOption={selectedOption}
                         />
                     )
                 )}

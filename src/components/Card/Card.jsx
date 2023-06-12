@@ -1,7 +1,8 @@
 import ContentLoader from 'react-content-loader'
 import { Link } from 'react-router-dom'
 import styles from './Card.module.scss'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 function Card({
     id,
@@ -16,7 +17,10 @@ function Card({
     cardsOfFavorites,
     setDataForDescription,
     dataForDescription,
+    selectedOption
 }) {
+    const [currencyPrice, setCurrencyPrice] = useState(0)
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -71,9 +75,36 @@ function Card({
         }
     }, [])
 
-    useEffect(() => {
-        console.log(dataForDescription)
-    }, [dataForDescription])
+    useEffect(() => {}, [dataForDescription])
+
+	useEffect(() => {
+		let isMounted = true; // Флаг, указывающий на то, что компонент монтирован
+	  
+		async function getCurrencyValue(price, selectedOption) {
+		  if (selectedOption === 'USD' || selectedOption === '') {
+			setCurrencyPrice(price);
+		  } else {
+			try {
+			  const currencyValue = await axios.get(
+				`https://api.frankfurter.app/latest?amount=${price}&from=USD&to=${localStorage.getItem('selectedOption')}`
+			  );
+			  if (isMounted) {
+				setCurrencyPrice(currencyValue.data.rates[selectedOption]);
+			  }
+			} catch (error) {
+			  // Обработка ошибки
+			  console.error(error);
+			}
+		  }
+		}
+	  
+		getCurrencyValue(price, selectedOption);
+	  
+		return () => {
+		  isMounted = false; // Устанавливаем флаг в false при размонтировании компонента
+		};
+	  }, [price, selectedOption]);
+	  
 
     return loading ? (
         <div className={styles.card}>
@@ -96,11 +127,11 @@ function Card({
             <img src={url} alt="" />
             <h4>{name}</h4>
             <div>
-                <h5>{price}$</h5>
+                <h5>{currencyPrice}</h5>
             </div>
             <div className={styles.btnsContainer}>
                 {/* <Link to={`/${String(name).replace(/\s/g, '')}`}> */}
-				<Link to="/about">
+                <Link to="/about">
                     <button
                         className={styles.addInBuy}
                         onClick={() => {
