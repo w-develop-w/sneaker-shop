@@ -1,11 +1,12 @@
-import { useEffect } from 'react'
-import styles from './Cart.module.scss'
+import { useEffect } from "react"
+import { Link } from "react-router-dom"
+import styles from "./Cart.module.scss"
 
-function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
+function Cart({ cardsOfCart, cart, setCart, setCardsOfCart, setOrder }) {
     useEffect(() => {
-        document.body.style.overflow = 'hidden'
+        document.body.style.overflow = "hidden"
         return () => {
-            document.body.style.overflow = 'auto'
+            document.body.style.overflow = "auto"
         }
     }, [])
 
@@ -16,14 +17,14 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
             updatedCards.splice(index, 1)
             setCardsOfCart(updatedCards)
 
-            let cartItems = localStorage.getItem('cartItems')
+            let cartItems = localStorage.getItem("cartItems")
 
             if (cartItems) {
                 cartItems = JSON.parse(cartItems)
 
                 cartItems.splice(index, 1)
 
-                localStorage.setItem('cartItems', JSON.stringify(cartItems))
+                localStorage.setItem("cartItems", JSON.stringify(cartItems))
             }
         }
     }
@@ -69,27 +70,33 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart }) {
 
                 <div className={styles.totalContent}>
                     <h3 className={styles.priceTitle}>
-                        Total:{' '}
+                        Total:{" "}
                         {cardsOfCart.reduce((acc, item) => acc + item.price, 0)}
                         $
                     </h3>
                     <button
                         onClick={() => {
                             setCardsOfCart([])
-							localStorage.setItem('cartItems', JSON.stringify([]))
+                            localStorage.setItem(
+                                "cartItems",
+                                JSON.stringify([])
+                            )
                         }}
                     >
                         Clear all
                     </button>
                 </div>
 
-                <button
-                    onClick={() => {
-                        setCart(!cart)
-                    }}
-                >
-                    Order
-                </button>
+                <Link to="/order" className={styles.link}>
+                    <button
+                        onClick={() => {
+                            setCart(!cart)
+                            setOrder("cart")
+                        }}
+                    >
+                        Order
+                    </button>
+                </Link>
             </div>
         </div>
     )

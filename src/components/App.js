@@ -1,14 +1,15 @@
-import './App.scss'
-import React, { useState, useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
-import axios from 'axios'
-import Cart from './Cart/Cart'
-import Header from './Header/Header'
-import Home from './Home/Home'
-import Search from './Search/Search'
-import Favorites from './Favorites/Favorites'
-import Description from './Description/Description'
+import "./App.scss"
+import React, { useState, useEffect } from "react"
+import { Route, Routes } from "react-router-dom"
+import axios from "axios"
+import Cart from "./Cart/Cart"
+import Header from "./Header/Header"
+import Home from "./Home/Home"
+import Search from "./Search/Search"
+import Favorites from "./Favorites/Favorites"
+import Description from "./Description/Description"
 import Filters from './Filters/Filters'
+import OrderFromDescription from "./OrderFromDescription/OrderFromDescription"
 
 function App() {
     // state for render modal window
@@ -24,11 +25,17 @@ function App() {
     // в зависимости от значения  isLoading решаем показывать карточки товаров на главной или  же процесс загрузки
     const [isLoading, setIsLoading] = useState(true)
     // description - состояние для отображения страницы с описанием к товару
+
+    const [description, setDescription] = useState(true)
+
     const [dataForDescription, setDataForDescription] = useState([])
     // filters - состояние для получения текстового значения кнопки фильтра
     const [filters, setFilters] = useState('')
 
-    const [selectedOption, setSelectedOption] = useState('')
+    const [dataOfCard, setDataOfCard] = useState([])
+
+    // Состояние для определения - какая именно кнопка заказа - из описаниея или из корзины 
+    const [order, setOrder] = useState('')
 
     useEffect(() => {
         let cartItems = localStorage.getItem('cartItems')
@@ -40,6 +47,7 @@ function App() {
         if (cartItems) {
             setCardsOfCart(JSON.parse(cartItems))
         }
+
     }, [])
 
     useEffect(() => {
@@ -88,7 +96,8 @@ function App() {
                                 cardsOfFavorites={cardsOfFavorites}
                                 setDataForDescription={setDataForDescription}
                                 dataForDescription={dataForDescription}
-                                filters={filters}
+								filters={filters}
+                                setDescription={setDescription}
 								selectedOption={selectedOption}
                             />
                             {cart && (
@@ -97,6 +106,7 @@ function App() {
                                     setCart={setCart}
                                     cardsOfCart={cardsOfCart}
                                     setCardsOfCart={setCardsOfCart}
+                                    setOrder={setOrder}
                                 />
                             )}
                         </>
@@ -113,7 +123,9 @@ function App() {
                                 setCardsOfFavorites={setCardsOfFavorites}
                                 cardsOfCart={cardsOfCart}
                                 setCardsOfCart={setCardsOfCart}
-                                setDataForDescription={setDataForDescription}
+                                setDataOfCard={setDataOfCard}
+                                setDescription={setDescription}
+								setDataForDescription={setDataForDescription}
                             />
                             {cart && (
                                 <Cart
@@ -121,6 +133,7 @@ function App() {
                                     setCart={setCart}
                                     cardsOfCart={cardsOfCart}
                                     setCardsOfCart={setCardsOfCart}
+                                    setOrder={setOrder}
                                 />
                             )}
                         </>
@@ -136,12 +149,8 @@ function App() {
                     exact
                     element={
                         <>
-                            {
-                                <Description
-                                    dataForDescription={dataForDescription}
-                                />
-                            }
-                            {cart && (
+                        {description && <Description dataOfCard={dataOfCard} setOrder={setOrder}/>}
+						{cart && (
                                 <Cart
                                     cart={cart}
                                     setCart={setCart}
@@ -152,6 +161,26 @@ function App() {
                         </>
                     }
                 />
+                <Route
+                    path="/order"
+                    exact
+                    element={
+                        <>
+                            <OrderFromDescription dataOfCard={dataOfCard[1]} cardsOfCart={cardsOfCart} order={order} />
+                            {cart && (
+                                <Cart
+                                    cart={cart}
+                                    setCart={setCart}
+                                    cardsOfCart={cardsOfCart}
+                                    setCardsOfCart={setCardsOfCart}
+                                    setOrder={setOrder}
+                                />
+                            )}
+                        </>
+                    }
+                />
+
+                
             </Routes>
         </div>
     )

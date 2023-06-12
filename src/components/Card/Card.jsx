@@ -17,7 +17,8 @@ function Card({
     cardsOfFavorites,
     setDataForDescription,
     dataForDescription,
-    selectedOption
+    selectedOption,
+    setDescription
 }) {
     const [currencyPrice, setCurrencyPrice] = useState(0)
 
@@ -136,6 +137,7 @@ function Card({
                         className={styles.addInBuy}
                         onClick={() => {
                             setDataDescToLocal(url, name, price)
+                            setDescription(true)
                         }}
                     >
                         Buy

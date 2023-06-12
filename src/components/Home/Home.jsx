@@ -19,6 +19,7 @@ function Home({
     dataForDescription,
 	filters,
 	selectedOption,
+    setDescription
 }) {
     const filteredCards = filterItems(cards, getCurrentValueSearch(searchValue, filters))
 
@@ -51,6 +52,7 @@ function Home({
                             setDataForDescription={setDataForDescription}
                             dataForDescription={dataForDescription}
 							selectedOption={selectedOption}
+                            setDescription={setDescription}
                         />
                     )
                 )}

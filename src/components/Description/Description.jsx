@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
-import styles from './Description.module.scss'
+import { Link } from "react-router-dom"
+import styles from "./Description.module.scss"
 
-function Description({  }) {
-	const data1 = localStorage.getItem('dataForDescription')
-	const data2 = JSON.parse(data1)
-	
+function Description({ dataOfCard, setOrder }) {
+    const data1 = localStorage.getItem("dataForDescription")
+    const data2 = JSON.parse(data1)
+    console.log(dataOfCard)
 
     return (
         <div className={styles.container}>
@@ -83,7 +83,15 @@ function Description({  }) {
 
             <div className={styles.buy}>
                 <h2>{data2[2]}$</h2>
-                <button>ORDER</button>
+                <Link to="/order">
+                    <button
+                        onClick={() => {
+                            setOrder("description")
+                        }}
+                    >
+                        ORDER
+                    </button>
+                </Link>
             </div>
         </div>
     )

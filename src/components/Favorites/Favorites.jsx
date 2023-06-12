@@ -77,7 +77,7 @@ function Favorites({
                     <h3>Your favorites is empty</h3>
                 )}
                 {cardsOfFavorites.map((item, index) => (
-                    <div className={stylesCard.card}>
+                    <div className={stylesCard.card} key={index}>
                         <img src={item.url} alt="" />
                         <h4>{item.name}</h4>
                         <div>
