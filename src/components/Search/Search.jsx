@@ -7,7 +7,7 @@ function Search({ searchValue, setSearchValue }) {
 
     return (
         <div className={styles.search}>
-            <h2>All count of shoes: </h2>
+            <h2>Search </h2>
             <input
                 type="text"
                 placeholder="Find some..."

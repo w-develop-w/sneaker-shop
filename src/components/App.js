@@ -8,6 +8,7 @@ import Home from "./Home/Home"
 import Search from "./Search/Search"
 import Favorites from "./Favorites/Favorites"
 import Description from "./Description/Description"
+import Filters from './Filters/Filters'
 import OrderFromDescription from "./OrderFromDescription/OrderFromDescription"
 
 function App() {
@@ -20,22 +21,25 @@ function App() {
 
     const [cardsOfFavorites, setCardsOfFavorites] = useState([])
     //  searchValue - переменная для храния данных которые ввел пользователь в поле инпут - поиск
-    const [searchValue, setSearchValue] = useState("")
+    const [searchValue, setSearchValue] = useState('')
     // в зависимости от значения  isLoading решаем показывать карточки товаров на главной или  же процесс загрузки
     const [isLoading, setIsLoading] = useState(true)
-	
     // description - состояние для отображения страницы с описанием к товару
+
     const [description, setDescription] = useState(false)
 
-    // Данные для страницы описания 
+    const [dataForDescription, setDataForDescription] = useState([])
+
+	const [filters, setFilters] = useState('')
+
     const [dataOfCard, setDataOfCard] = useState([])
 
     // Состояние для определения - какая именно кнопка заказа - из описаниея или из корзины 
     const [order, setOrder] = useState('')
 
     useEffect(() => {
-        let cartItems = localStorage.getItem("cartItems")
-        let favoritesItems = localStorage.getItem("favoritesItems")
+        let cartItems = localStorage.getItem('cartItems')
+        let favoritesItems = localStorage.getItem('favoritesItems')
         if (favoritesItems) {
             setCardsOfFavorites(JSON.parse(favoritesItems))
         }
@@ -48,7 +52,7 @@ function App() {
     useEffect(() => {
         async function fetachData() {
             const itemsResponse = await axios.get(
-                "https://6478d572362560649a2e842a.mockapi.io/cards"
+                'https://6478d572362560649a2e842a.mockapi.io/cards'
             )
 
             setIsLoading(false)
@@ -60,7 +64,6 @@ function App() {
 
     return (
         <div className="App">
-
             <Header
                 cart={cart}
                 setCart={setCart}
@@ -74,6 +77,7 @@ function App() {
                     exact
                     element={
                         <>
+							<Filters setFilters={setFilters}/>
                             <Search
                                 searchValue={searchValue}
                                 setSearchValue={setSearchValue}
@@ -86,8 +90,9 @@ function App() {
                                 setCardsOfCart={setCardsOfCart}
                                 setCardsOfFavorites={setCardsOfFavorites}
                                 cardsOfFavorites={cardsOfFavorites}
-                                setDescription={setDescription}
-                                setDataOfCard={setDataOfCard}
+                                setDataForDescription={setDataForDescription}
+                                dataForDescription={dataForDescription}
+								filters={filters}
                             />
                             {cart && (
                                 <Cart
@@ -114,6 +119,7 @@ function App() {
                                 setCardsOfCart={setCardsOfCart}
                                 setDataOfCard={setDataOfCard}
                                 setDescription={setDescription}
+								setDataForDescription={setDataForDescription}
                             />
                             {cart && (
                                 <Cart
@@ -128,13 +134,16 @@ function App() {
                     }
                 />
 
-
                 <Route
-                    path={`/${String(dataOfCard[1]).replace(/\s/g, '')}`}
+                    // path={`/${String(dataForDescription[1]).replace(
+                    //     /\s/g,
+                    //     ''
+                    // )}`}
+					path="/about"
                     exact
                     element={
                         <>
-                        {description && <Description dataOfCard={dataOfCard} setOrder={setOrder} />}
+                        {description && <Description dataOfCard={dataOfCard} setOrder={setOrder}/>}
 						{cart && (
                                 <Cart
                                     cart={cart}
@@ -146,8 +155,6 @@ function App() {
                         </>
                     }
                 />
-
-
                 <Route
                     path="/order"
                     exact
