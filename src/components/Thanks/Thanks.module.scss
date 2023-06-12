@@ -1,0 +1,76 @@
+@use "../../index.scss" as index;
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(7px);
+    animation: any 0.3s;
+    
+    @keyframes any {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    .thanks {
+        height: 420px;
+        width: 550px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        background-color: white;
+        position: relative;
+        padding: 15px;
+        // width: 40%;
+        border-radius: 30px;
+        background-color: index.$base-color;
+        color: white;
+        box-shadow: 0 0 10px 5px rgb(137, 137, 137);
+        position: relative;
+        
+        .close {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            
+            i {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                font-size: 30px;
+                color: white;
+                margin-right: 15px;
+                margin-bottom: 20px;
+                transition: 0.2s;
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(115%);
+                    color: rgb(211, 211, 211);
+                }
+            }
+        } 
+
+        h2 {
+            margin-top: 0;
+            font-size: 30px;
+        }
+        
+        h3 {
+            margin-top: 0;
+            // padding-top: 80px;
+        }
+    }
+}
