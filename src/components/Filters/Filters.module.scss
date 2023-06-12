@@ -46,3 +46,16 @@ li {
     cursor: pointer;
     transform: scale(105%);
 }
+
+li {
+	transition: .3s;
+	&:hover {
+		transform: scale(110%);
+		cursor: pointer;
+	}
+
+    i {
+        color: index.$base-color;
+        font-size: 30px;
+    }
+}

@@ -65,7 +65,6 @@ function App() {
         fetachData()
     }, [])
 
-
     return (
         <div className="App">
             <Header

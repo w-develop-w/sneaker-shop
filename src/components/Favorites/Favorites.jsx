@@ -57,7 +57,7 @@ function Favorites({
 
     return (
         <div className={styles.container}>
-            <div>
+            <div className={styles.containerDiv}>
                 <h2>Favorites: {cardsOfFavorites.length} </h2>
                 <button
                     className={styles.clearAll}
@@ -79,11 +79,13 @@ function Favorites({
                 {cardsOfFavorites.map((item, index) => (
                     <div className={stylesCard.card} key={index}>
                         <img src={item.url} alt="" />
-                        <h4>{item.name}</h4>
-                        <div>
-                            <h5>{item.price}$</h5>
-                        </div>
-                        <div className={stylesCard.btnsContainer}>
+                        <h4 style={{fontSize: 18 + 'px', fontWeight: 500}}>{item.name}</h4>
+                        {/* <div>
+                            <span>
+                                <strong>{item.price}</strong> USD
+                            </span>
+                        </div> */}
+                        <div className={stylesCard.btnsContainer} style={{marginTop: 50 + 'px'}}>
                             {/* <button className={stylesCard.addInBuy}>Buy</button> */}
                             <Link to="/about">
                                 <button
