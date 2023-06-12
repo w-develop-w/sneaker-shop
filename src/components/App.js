@@ -32,6 +32,8 @@ function App() {
     // filters - состояние для получения текстового значения кнопки фильтра
     const [filters, setFilters] = useState('')
 
+	const [selectedOption, setSelectedOption] = useState('')
+
     const [dataOfCard, setDataOfCard] = useState([])
 
     // Состояние для определения - какая именно кнопка заказа - из описаниея или из корзины 

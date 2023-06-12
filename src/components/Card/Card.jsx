@@ -18,7 +18,7 @@ function Card({
     setDataForDescription,
     dataForDescription,
     selectedOption,
-    setDescription
+    setDescription,
 }) {
     const [currencyPrice, setCurrencyPrice] = useState(0)
 
@@ -78,34 +78,37 @@ function Card({
 
     useEffect(() => {}, [dataForDescription])
 
-	useEffect(() => {
-		let isMounted = true; // Флаг, указывающий на то, что компонент монтирован
-	  
-		async function getCurrencyValue(price, selectedOption) {
-		  if (selectedOption === 'USD' || selectedOption === '') {
-			setCurrencyPrice(price);
-		  } else {
-			try {
-			  const currencyValue = await axios.get(
-				`https://api.frankfurter.app/latest?amount=${price}&from=USD&to=${localStorage.getItem('selectedOption')}`
-			  );
-			  if (isMounted) {
-				setCurrencyPrice(currencyValue.data.rates[selectedOption]);
-			  }
-			} catch (error) {
-			  // Обработка ошибки
-			  console.error(error);
-			}
-		  }
-		}
-	  
-		getCurrencyValue(price, selectedOption);
-	  
-		return () => {
-		  isMounted = false; // Устанавливаем флаг в false при размонтировании компонента
-		};
-	  }, [price, selectedOption]);
-	  
+    useEffect(() => {
+        let isMounted = true // Флаг, указывающий на то, что компонент монтирован
+
+        async function getCurrencyValue(price, selectedOption) {
+            if (selectedOption === 'USD' || selectedOption === '') {
+                setCurrencyPrice(price)
+            } else {
+                try {
+                    const currencyValue = await axios.get(
+                        `https://api.frankfurter.app/latest?amount=${price}&from=USD&to=${localStorage.getItem(
+                            'selectedOption'
+                        )}`
+                    )
+                    if (isMounted) {
+                        setCurrencyPrice(
+                            currencyValue.data.rates[selectedOption]
+                        )
+                    }
+                } catch (error) {
+                    // Обработка ошибки
+                    // console.error(error)
+                }
+            }
+        }
+
+        getCurrencyValue(price, selectedOption)
+
+        return () => {
+            isMounted = false // Устанавливаем флаг в false при размонтировании компонента
+        }
+    }, [price, selectedOption])
 
     return loading ? (
         <div className={styles.card}>
