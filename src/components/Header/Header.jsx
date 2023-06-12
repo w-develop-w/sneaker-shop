@@ -25,6 +25,8 @@ function Header({
         }
     }, [setSelectedOption])
 
+
+
     return (
         <div className={styles.container}>
             <header className={styles.header}>
@@ -43,7 +45,8 @@ function Header({
                             type="color"
                             value={color}
                             onChange={(e) => {
-                                setColor(e.target.value)
+                                localStorage.setItem('colorTheme', e.target.value)
+                                setColor(localStorage.getItem('colorTheme'))
                                 console.log(color)
                             }}
                         />
