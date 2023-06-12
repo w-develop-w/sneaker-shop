@@ -1,4 +1,4 @@
-@use '../../index.scss' as index;
+@use "../../index.scss" as index;
 
 .container {
     display: flex;
@@ -47,7 +47,7 @@
             gap: 10px;
             overflow: auto;
             max-height: 200px;
-			overflow-y: scroll;
+            overflow-y: scroll;
             .card {
                 border: 1px solid white;
                 border-radius: 20px;
@@ -99,8 +99,10 @@
             }
         }
 
+        
         button {
             all: unset;
+
             outline: 1px solid white;
             padding: 5px 15px;
             border-radius: 20px;
@@ -113,6 +115,10 @@
                 color: index.$base-color;
             }
         }
+
+        .link {
+            all: unset;
+        }
     }
 }
 
@@ -122,14 +128,14 @@
 }
 
 .emptyTitle {
-	font-weight: 400;
-	font-size: 20px;
+    font-weight: 400;
+    font-size: 20px;
 }
 
 .totalContent {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 1024px) {

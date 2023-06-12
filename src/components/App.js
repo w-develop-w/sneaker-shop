@@ -30,6 +30,9 @@ function App() {
     // Данные для страницы описания 
     const [dataOfCard, setDataOfCard] = useState([])
 
+    // Состояние для определения - какая именно кнопка заказа - из описаниея или из корзины 
+    const [order, setOrder] = useState('')
+
     useEffect(() => {
         let cartItems = localStorage.getItem("cartItems")
         let favoritesItems = localStorage.getItem("favoritesItems")
@@ -92,6 +95,7 @@ function App() {
                                     setCart={setCart}
                                     cardsOfCart={cardsOfCart}
                                     setCardsOfCart={setCardsOfCart}
+                                    setOrder={setOrder}
                                 />
                             )}
                         </>
@@ -117,6 +121,7 @@ function App() {
                                     setCart={setCart}
                                     cardsOfCart={cardsOfCart}
                                     setCardsOfCart={setCardsOfCart}
+                                    setOrder={setOrder}
                                 />
                             )}
                         </>
@@ -129,7 +134,7 @@ function App() {
                     exact
                     element={
                         <>
-                        {description && <Description dataOfCard={dataOfCard} />}
+                        {description && <Description dataOfCard={dataOfCard} setOrder={setOrder} />}
 						{cart && (
                                 <Cart
                                     cart={cart}
@@ -148,7 +153,16 @@ function App() {
                     exact
                     element={
                         <>
-                            <OrderFromDescription dataOfCard={dataOfCard[1]} />
+                            <OrderFromDescription dataOfCard={dataOfCard[1]} cardsOfCart={cardsOfCart} order={order} />
+                            {cart && (
+                                <Cart
+                                    cart={cart}
+                                    setCart={setCart}
+                                    cardsOfCart={cardsOfCart}
+                                    setCardsOfCart={setCardsOfCart}
+                                    setOrder={setOrder}
+                                />
+                            )}
                         </>
                     }
                 />

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import styles from "./Description.module.scss"
 
-function Description({ dataOfCard }) {
+function Description({ dataOfCard, setOrder }) {
     return (
         <div className={styles.container}>
             <div className={styles.containerForClose}>
@@ -80,7 +80,7 @@ function Description({ dataOfCard }) {
             <div className={styles.buy}>
                 <h2>{dataOfCard[2]}$</h2>
                 <Link to="/order">
-                    <button>ORDER</button>
+                    <button onClick={() => {setOrder('description')}}>ORDER</button>
                 </Link>
             </div>
         </div>
