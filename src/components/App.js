@@ -26,7 +26,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(true)
     // description - состояние для отображения страницы с описанием к товару
 
-    const [description, setDescription] = useState(false)
+    const [description, setDescription] = useState(true)
 
     const [dataForDescription, setDataForDescription] = useState([])
 
@@ -47,6 +47,7 @@ function App() {
         if (cartItems) {
             setCardsOfCart(JSON.parse(cartItems))
         }
+
     }, [])
 
     useEffect(() => {
@@ -93,6 +94,7 @@ function App() {
                                 setDataForDescription={setDataForDescription}
                                 dataForDescription={dataForDescription}
 								filters={filters}
+                                setDescription={setDescription}
                             />
                             {cart && (
                                 <Cart

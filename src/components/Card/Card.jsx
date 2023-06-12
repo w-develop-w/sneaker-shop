@@ -16,6 +16,7 @@ function Card({
     cardsOfFavorites,
     setDataForDescription,
     dataForDescription,
+    setDescription
 }) {
     const scrollToTop = () => {
         window.scrollTo({
@@ -105,6 +106,7 @@ function Card({
                         className={styles.addInBuy}
                         onClick={() => {
                             setDataDescToLocal(url, name, price)
+                            setDescription(true)
                         }}
                     >
                         Buy

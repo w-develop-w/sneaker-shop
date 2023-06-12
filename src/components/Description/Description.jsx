@@ -2,6 +2,10 @@ import { Link } from "react-router-dom"
 import styles from "./Description.module.scss"
 
 function Description({ dataOfCard, setOrder }) {
+    const data1 = localStorage.getItem("dataForDescription")
+    const data2 = JSON.parse(data1)
+    console.log(dataOfCard)
+
     return (
         <div className={styles.container}>
             <div className={styles.containerForClose}>
@@ -15,12 +19,12 @@ function Description({ dataOfCard, setOrder }) {
             <div className={styles.description}>
                 <div className={styles.leftPart}>
                     <div className={styles.imageWrapper}>
-                        <img src={dataOfCard[0]} alt="Img" />
+                        <img src={data2[0]} alt="Img" />
                     </div>
                 </div>
 
                 <div className={styles.rightPart}>
-                    <h2>{dataOfCard[1]}</h2>
+                    <h2>{data2[1]}</h2>
                     <p>
                         Introducing the Puma X Aka Boku Future Cross Trainers, a
                         remarkable collaboration between Puma, a renowned
@@ -78,9 +82,15 @@ function Description({ dataOfCard, setOrder }) {
             </div>
 
             <div className={styles.buy}>
-                <h2>{dataOfCard[2]}$</h2>
+                <h2>{data2[2]}$</h2>
                 <Link to="/order">
-                    <button onClick={() => {setOrder('description')}}>ORDER</button>
+                    <button
+                        onClick={() => {
+                            setOrder("description")
+                        }}
+                    >
+                        ORDER
+                    </button>
                 </Link>
             </div>
         </div>
