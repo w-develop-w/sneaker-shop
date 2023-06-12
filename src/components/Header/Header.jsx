@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import styles from './Header.module.scss'
-import React, { useEffect } from 'react'
+import { Link } from "react-router-dom"
+import styles from "./Header.module.scss"
+import React, { useEffect } from "react"
 
 function Header({
     cart,
@@ -9,15 +9,17 @@ function Header({
     cardsOfFavorites,
     selectedOption,
     setSelectedOption,
+    color,
+    setColor,
 }) {
     const handleSelectChange = (event) => {
         const value = event.target.value
         setSelectedOption(value)
-        localStorage.setItem('selectedOption', value) // Сохраняем выбранное значение в localStorage
+        localStorage.setItem("selectedOption", value) // Сохраняем выбранное значение в localStorage
     }
 
     useEffect(() => {
-        const storedValue = localStorage.getItem('selectedOption')
+        const storedValue = localStorage.getItem("selectedOption")
         if (storedValue) {
             setSelectedOption(storedValue) // Устанавливаем сохраненное значение из localStorage
         }
@@ -26,9 +28,27 @@ function Header({
     return (
         <div className={styles.container}>
             <header className={styles.header}>
-                <Link className={styles.links} to="/">
-                    <i className={`${styles.firstIcon} ri-home-3-fill`}></i>
-                </Link>
+                <div className={styles.iconsContainer}>
+                    <Link className={styles.links} to="/">
+                        <i className={`${styles.firstIcon} ri-home-3-fill`}></i>
+                    </Link>
+                    <label
+                        htmlFor="colorInput"
+                        className={styles.colorPickerLabel}
+                    >
+                        <i className="ri-palette-line"></i>
+                        <input
+                            id="colorInput"
+                            className={styles.colorPicker}
+                            type="color"
+                            value={color}
+                            onChange={(e) => {
+                                setColor(e.target.value)
+                                console.log(color)
+                            }}
+                        />
+                    </label>
+                </div>
 
                 <h2>Sneaker Shop</h2>
 
@@ -42,7 +62,7 @@ function Header({
                             <option value="EUR">EUR</option>
                             <option value="CZK">CZK</option>
                             <option value="CAD">CAD</option>
-							<option value="PLN">PLN</option>
+                            <option value="PLN">PLN</option>
                         </select>
                     }
 

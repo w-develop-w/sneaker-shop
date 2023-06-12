@@ -1,5 +1,9 @@
-$base-color: rgb(87, 87, 151);
+// $base-color: rgb(87, 87, 151);
 // $base-color: rgb(42, 185, 78);
+
+:root {
+    --base-color: rgb(87, 87, 151); // значение по умолчанию
+}
 
 html {
 	animation: any .4s;

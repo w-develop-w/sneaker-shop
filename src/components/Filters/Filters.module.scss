@@ -1,4 +1,4 @@
-@use '../../index.scss' as index;
+// @use '../../index.scss' as index;
 
 ul,
 li {
@@ -25,14 +25,17 @@ li {
 
 .filterItem {
     padding: 5px 15px;
-    background-color: index.$base-color;
+    // background-color: index.$base-color;
+    background-color: var(--base-color);
     border-radius: 20px;
     color: white;
     transition: 0.3s;
 
     &:hover {
-        outline: 1px solid index.$base-color;
-        color: index.$base-color;
+        // outline: 1px solid index.$base-color;
+        outline: 1px solid var(--base-color);
+        // color: index.$base-color;
+        color: var(--base-color);
         background-color: white;
         cursor: pointer;
         transform: scale(105%);
@@ -40,8 +43,10 @@ li {
 }
 
 .filterItemActive {
-    outline: 1px solid index.$base-color;
-    color: index.$base-color;
+    // outline: 1px solid index.$base-color;
+    outline: 1px solid var(--base-color);
+    // color: index.$base-color;
+    color: var(--base-color);
     background-color: white;
     cursor: pointer;
     transform: scale(105%);
@@ -55,7 +60,8 @@ li {
 	}
 
     i {
-        color: index.$base-color;
+        // color: index.$base-color;
+        color: var(--base-color);
         font-size: 30px;
     }
 }

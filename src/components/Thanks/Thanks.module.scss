@@ -35,7 +35,8 @@
         padding: 15px;
         // width: 40%;
         border-radius: 30px;
-        background-color: index.$base-color;
+        // background-color: index.$base-color;
+        background-color: var(--base-color);
         color: white;
         box-shadow: 0 0 10px 5px rgb(137, 137, 137);
         position: relative;

@@ -43,6 +43,12 @@ function App() {
     // Состояние - открыта или закрыто модальное окно благодарности 
     const [thanks, setThanks] = useState(false)
 
+    const [color, setColor] = useState('rgb(87, 87, 151)');
+
+    useEffect(() => {
+        document.documentElement.style.setProperty('--base-color', color);
+    }, [color]);
+
     useEffect(() => {
         let cartItems = localStorage.getItem("cartItems")
         let favoritesItems = localStorage.getItem("favoritesItems")
@@ -78,6 +84,8 @@ function App() {
                 cardsOfFavorites={cardsOfFavorites}
 				selectedOption={selectedOption}
 				setSelectedOption={setSelectedOption}
+                color={color}
+                setColor={setColor}
             />
 
             <Routes>
@@ -190,7 +198,7 @@ function App() {
                     }
                 />
             </Routes>
-            
+
             {
                thanks && <Thanks setThanks={setThanks}/>
 

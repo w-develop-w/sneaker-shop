@@ -1,4 +1,4 @@
-@use '../../index.scss' as index;
+@use "../../index.scss" as index;
 
 .container {
     margin: 20px;
@@ -11,9 +11,31 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: index.$base-color;
+    // background-color: index.$base-color;
+    background-color: var(--base-color);
     border-radius: 50px;
     z-index: 1;
+
+    .colorPickerLabel {
+        position: relative;
+
+        i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            z-index: 1;
+
+        }
+
+        input {
+            padding-left: 25px;
+            height: 1px;
+            width: 1px;
+            background-color: var(--base-color);
+            border: var(--base-color);
+        }
+    }
 
     h2 {
         font-size: 25px;
@@ -63,19 +85,20 @@
         display: flex;
         gap: 20px;
 
-		select {
-			all: unset;
-			background-color: index.$base-color;
-			border: none;
-			font-size: 19px;
-			color: white;
-			font-weight: 600;
-			transition: .3s;
+        select {
+            all: unset;
+            // background-color: index.$base-color;
+            background-color: var(--base-color);
+            border: none;
+            font-size: 19px;
+            color: white;
+            font-weight: 600;
+            transition: 0.3s;
 
-			&:hover {
-				cursor: pointer;
-			}
-		}
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
 
     .iconContent {
@@ -112,10 +135,10 @@
 }
 
 @media screen and (max-width: 767px) {
-	.header {
-		height: 75px;
-		h2 {
-			display: none;
-		}
-	}
+    .header {
+        height: 75px;
+        h2 {
+            display: none;
+        }
+    }
 }
