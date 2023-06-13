@@ -1,8 +1,6 @@
-// $base-color: rgb(87, 87, 151);
-// $base-color: rgb(42, 185, 78);
 
 :root {
-    --base-color: black; // значение по умолчанию
+    --base-color: rgb(40, 40, 40); // значение по умолчанию
 }
 
 html {
@@ -30,4 +28,23 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--base-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  border: 2px solid var(--base-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #939393;
 }
