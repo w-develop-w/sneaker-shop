@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--base-color);
+    // border-radius: 40px 40px 0 0 ;
+    color: white;
+    h5 {
+        margin: 0;
+        padding: 15px 0;
+    }
+}
