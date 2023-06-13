@@ -11,14 +11,14 @@ function Search({
     cards,
 }) {
     const { minPropertyValue, maxPropertyValue } = cards.reduce(
-		(acc, card) => {
-		  const propertyValue = card.price;
-		  acc.minPropertyValue = Math.min(acc.minPropertyValue, propertyValue);
-		  acc.maxPropertyValue = Math.max(acc.maxPropertyValue, propertyValue);
-		  return acc;
-		},
-		{ minPropertyValue: Infinity, maxPropertyValue: -Infinity }
-	  );
+        (acc, card) => {
+            const propertyValue = card.price
+            acc.minPropertyValue = Math.min(acc.minPropertyValue, propertyValue)
+            acc.maxPropertyValue = Math.max(acc.maxPropertyValue, propertyValue)
+            return acc
+        },
+        { minPropertyValue: Infinity, maxPropertyValue: -Infinity }
+    )
 
     const onChangeSearchInput = (event) => {
         setSearchRangeValue('0')
@@ -30,7 +30,7 @@ function Search({
         setSearchRangeValue(event.target.value)
     }
 
-	// value for calculate current price with selected currency
+    // value for calculate current price with selected currency
     const [currencyValue, setCurrencyValue] = useState(0)
 
     useEffect(() => {
@@ -54,7 +54,10 @@ function Search({
             <h2>Search </h2>
             <div className={styles.searchPrice}>
                 <span>
-                    {`${Math.round((minPropertyValue * currencyValue),1)} ${selectedOption.toLowerCase()}`}
+                    <strong style={{ marginRight: 5 + 'px' }}>
+                        {`${Math.round(minPropertyValue * currencyValue, 1)}`}{' '}
+                    </strong>
+                    {selectedOption}
                 </span>
                 <input
                     type="range"
@@ -64,7 +67,23 @@ function Search({
                     step="10"
                     onChange={onChangeSearchInputRange}
                 />
-                <span> {`${searchRangeValue === '' ? Math.round((maxPropertyValue * currencyValue),1) : Math.round((searchRangeValue * currencyValue),1)} ${selectedOption.toLowerCase()}`}</span>
+                <span>
+                    {' '}
+                    <strong style={{ marginRight: 5 + 'px' }}>
+                        {`${
+                            searchRangeValue === ''
+                                ? Math.round(
+                                      maxPropertyValue * currencyValue,
+                                      1
+                                  )
+                                : Math.round(
+                                      searchRangeValue * currencyValue,
+                                      1
+                                  )
+                        }`}
+                    </strong>
+                    {selectedOption}
+                </span>
             </div>
             <input
                 className={styles.inputSearch}

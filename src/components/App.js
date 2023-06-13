@@ -38,7 +38,7 @@ function App() {
     // filters - состояние для получения текстового значения кнопки фильтра
     const [filters, setFilters] = useState('')
 
-    const [selectedOption, setSelectedOption] = useState('')
+    const [selectedOption, setSelectedOption] = useState('USD')
 
     const [dataOfCard, setDataOfCard] = useState([])
 
@@ -124,7 +124,6 @@ function App() {
                                 setDescription={setDescription}
 								selectedOption={selectedOption}
                             />
-                            <Developers/>
                             {cart && (
                                 <Cart
                                     cart={cart}
@@ -223,7 +222,7 @@ function App() {
 
                 {thanks && <Thanks setThanks={setThanks} />}
             </div>
-
+			<Developers/>
             <Footer />
         </div>
     )

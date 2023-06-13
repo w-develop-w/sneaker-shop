@@ -1,20 +1,19 @@
 .container {
-    max-width: 1024px;
-    margin: 70px auto;
-    background-color: var(--base-color);
-    color: white;
+    width: 1024px;
+    margin: 0 auto;
+    border: 2px solid var(--base-color);
+    color: var(--base-color);
     border-radius: 50px;
+    margin-bottom: 20px;
+    margin-top: 50px;
 
     @media screen and (max-width: 1085px) {
-        margin: 70px 15px;
+        width: 95%;
     }
 
     @media screen and (max-width: 645px) {
-        // column-gap: 25px;
-        // flex-direction: column;
-        max-width: 250px;
-        margin: 40px auto;
-        text-align: center;
+        width: 270px;
+        margin-top: 17px;
     }
 
     .developers {
@@ -24,38 +23,32 @@
         gap: 100px;
         padding: 10px 45px;
 
-        @media screen and (max-width: 720px) {
-            // column-gap: 25px;
-            flex-direction: column;
-            gap: 10px;
-        }
-
         @media screen and (max-width: 645px) {
-          row-gap: 15px;
+            row-gap: 15px;
+            flex-direction: column;
         }
 
         h2 {
             margin: 0;
+            font-size: 20px;
         }
 
         div {
             display: flex;
             column-gap: 50px;
-            // flex-direction: column;
 
             @media screen and (max-width: 720px) {
                 column-gap: 25px;
             }
 
             @media screen and (max-width: 645px) {
-                // row-gap: 5px;
                 flex-direction: column;
             }
 
             .developer {
                 display: flex;
                 flex-direction: column;
-                
+
                 @media screen and (max-width: 645px) {
                     padding-bottom: 15px;
                 }
@@ -63,24 +56,29 @@
                 h3 {
                     margin-top: 0;
                     margin-bottom: 3px;
+                    font-size: 16px;
                 }
-    
+
                 ul {
                     display: flex;
                     justify-content: center;
                     column-gap: 15px;
+
                     li {
-                        all: unset;
-    
+                        list-style: none;
+
                         a {
                             all: unset;
-    
+
                             i {
-                                color: white;
-                                font-size: 25px;
+                                color: var(--base-color);
+                                font-size: 22px;
+                                transition: 0.3s;
+                                padding: 5px;
 
                                 &:hover {
-                                    color: rgb(202, 202, 202);
+                                    cursor: pointer;
+                                    transform: scale(125%);
                                 }
                             }
                         }
