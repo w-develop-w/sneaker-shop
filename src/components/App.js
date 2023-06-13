@@ -124,6 +124,7 @@ function App() {
                                 setDescription={setDescription}
 								selectedOption={selectedOption}
                             />
+                            <Developers/>
                             {cart && (
                                 <Cart
                                     cart={cart}
