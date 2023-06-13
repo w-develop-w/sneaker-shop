@@ -1,10 +1,32 @@
 import { Link } from "react-router-dom"
 import styles from "./Description.module.scss"
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
-function Description({ dataOfCard, setOrder }) {
+function Description({ dataOfCard, setOrder, selectedOption }) {
     const data1 = localStorage.getItem("dataForDescription")
     const data2 = JSON.parse(data1)
-    console.log(dataOfCard)
+    // console.log(dataOfCard)
+
+	// value for calculate current price with selected currency
+    const [currencyValue, setCurrencyValue] = useState(0)
+	useEffect(() => {
+        async function getCurrencyValue(selectedOption) {
+            if (selectedOption === 'USD' || selectedOption === '') {
+                setCurrencyValue(1)
+            } else {
+                const currencyValue = await axios.get(
+                    `https://api.frankfurter.app/latest?amount=1&from=USD&to=${localStorage.getItem(
+                        'selectedOption'
+                    )}`
+                )
+                setCurrencyValue(currencyValue.data.rates[selectedOption])
+            }
+        }
+        getCurrencyValue(selectedOption)
+    }, [currencyValue, selectedOption])
+
+
 
     return (
         <div className={styles.container}>
@@ -82,7 +104,7 @@ function Description({ dataOfCard, setOrder }) {
             </div>
 
             <div className={styles.buy}>
-                <h2>{data2[2]}$</h2>
+                <h2>{Math.round((data2[2] * currencyValue),1)} {selectedOption}</h2>
                 <Link to="/order">
                     <button
                         onClick={() => {

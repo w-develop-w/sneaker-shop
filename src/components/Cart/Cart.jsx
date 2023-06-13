@@ -1,14 +1,17 @@
-import { useEffect } from "react"
-import { Link } from "react-router-dom"
-import styles from "./Cart.module.scss"
+import { Link } from 'react-router-dom'
+import styles from './Cart.module.scss'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
-function Cart({ cardsOfCart, cart, setCart, setCardsOfCart, setOrder }) {
-    useEffect(() => {
-        document.body.style.overflow = "hidden"
-        return () => {
-            document.body.style.overflow = "auto"
-        }
-    }, [])
+function Cart({
+    cardsOfCart,
+    cart,
+    setCart,
+    setCardsOfCart,
+    setOrder,
+    selectedOption,
+}) {
+    document.body.style.overflowY = 'scroll'
 
     const delFromCart = (obj) => {
         const index = cardsOfCart.findIndex((item) => item.id === obj.id)
@@ -17,18 +20,36 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart, setOrder }) {
             updatedCards.splice(index, 1)
             setCardsOfCart(updatedCards)
 
-            let cartItems = localStorage.getItem("cartItems")
+            let cartItems = localStorage.getItem('cartItems')
 
             if (cartItems) {
                 cartItems = JSON.parse(cartItems)
 
                 cartItems.splice(index, 1)
 
-                localStorage.setItem("cartItems", JSON.stringify(cartItems))
+                localStorage.setItem('cartItems', JSON.stringify(cartItems))
             }
         }
     }
+    // value for calculate current price with selected currency
+    const [currencyValue, setCurrencyValue] = useState(0)
 
+    useEffect(() => {
+        async function getCurrencyValue(selectedOption) {
+            if (selectedOption === 'USD' || selectedOption === '') {
+                setCurrencyValue(1)
+            } else {
+                const currencyValue = await axios.get(
+                    `https://api.frankfurter.app/latest?amount=1&from=USD&to=${localStorage.getItem(
+                        'selectedOption'
+                    )}`
+                )
+                setCurrencyValue(currencyValue.data.rates[selectedOption])
+            }
+        }
+        getCurrencyValue(selectedOption)
+    }, [currencyValue, selectedOption])
+	
     return (
         <div className={styles.container}>
             <div className={styles.cart}>
@@ -58,7 +79,13 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart, setOrder }) {
                                 <img src={item.url} alt="img" />
                                 <div>
                                     <h3>{item.name}</h3>
-                                    <h3>{item.price}$</h3>
+                                    <h3>
+                                        {Math.round(
+                                            Number(item.price * currencyValue),
+                                            1
+                                        )}
+                                        {selectedOption}
+                                    </h3>
                                 </div>
                                 <i
                                     onClick={() => delFromCart(item)}
@@ -70,15 +97,23 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart, setOrder }) {
 
                 <div className={styles.totalContent}>
                     <h3 className={styles.priceTitle}>
-                        Total:{" "}
-                        {cardsOfCart.reduce((acc, item) => acc + item.price, 0)}
-                        $
+                        Total:{' '}
+                        {cardsOfCart.reduce(
+                            (acc, item) =>
+                                acc +
+                                Math.round(
+                                    Number(item.price * currencyValue),
+                                    1
+                                ),
+                            0
+                        )}
+                        {'  ' + selectedOption}
                     </h3>
                     <button
                         onClick={() => {
                             setCardsOfCart([])
                             localStorage.setItem(
-                                "cartItems",
+                                'cartItems',
                                 JSON.stringify([])
                             )
                         }}
@@ -91,7 +126,7 @@ function Cart({ cardsOfCart, cart, setCart, setCardsOfCart, setOrder }) {
                     <button
                         onClick={() => {
                             setCart(!cart)
-                            setOrder("cart")
+                            setOrder('cart')
                         }}
                     >
                         Order

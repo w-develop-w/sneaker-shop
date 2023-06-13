@@ -15,13 +15,14 @@ function Header({
     const handleSelectChange = (event) => {
         const value = event.target.value
         setSelectedOption(value)
-        localStorage.setItem('selectedOption', value) // Сохраняем выбранное значение в localStorage
+        localStorage.setItem('selectedOption', value)
+		window.location.reload()
     }
 
     useEffect(() => {
         const storedValue = localStorage.getItem('selectedOption')
         if (storedValue) {
-            setSelectedOption(storedValue) // Устанавливаем сохраненное значение из localStorage
+            setSelectedOption(storedValue)
         }
     }, [setSelectedOption])
 

@@ -84,7 +84,6 @@ function OrderFromDescription({
                     name="choice"
                     value={order === 'description' ? choice : strChoiceCart}
                     onChange={(e) => setChoice(e.target.value)}
-                    placeholder={dataForDescription[1]}
                 />
                 <select
                     name="size"
@@ -110,12 +109,7 @@ function OrderFromDescription({
                     <option value="43">43</option>
                     <option value="44">44</option>
                     <option value="45">45</option>
-                    <option
-                        value="46
-                    "
-                    >
-                        46
-                    </option>
+                    <option value="46">46</option>
                 </select>
 
                 <input
