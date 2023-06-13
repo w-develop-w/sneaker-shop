@@ -1,16 +1,16 @@
-import "./App.scss"
-import React, { useState, useEffect } from "react"
-import { Route, Routes } from "react-router-dom"
-import axios from "axios"
-import Cart from "./Cart/Cart"
-import Header from "./Header/Header"
-import Home from "./Home/Home"
-import Search from "./Search/Search"
-import Favorites from "./Favorites/Favorites"
-import Description from "./Description/Description"
-import Filters from "./Filters/Filters"
-import OrderFromDescription from "./OrderFromDescription/OrderFromDescription"
-import Thanks from "./Thanks/Thanks"
+import './App.scss'
+import React, { useState, useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import axios from 'axios'
+import Cart from './Cart/Cart'
+import Header from './Header/Header'
+import Home from './Home/Home'
+import Search from './Search/Search'
+import Favorites from './Favorites/Favorites'
+import Description from './Description/Description'
+import Filters from './Filters/Filters'
+import OrderFromDescription from './OrderFromDescription/OrderFromDescription'
+import Thanks from './Thanks/Thanks'
 
 function App() {
     // state for render modal window
@@ -22,7 +22,10 @@ function App() {
 
     const [cardsOfFavorites, setCardsOfFavorites] = useState([])
     //  searchValue - переменная для храния данных которые ввел пользователь в поле инпут - поиск
-    const [searchValue, setSearchValue] = useState("")
+    const [searchValue, setSearchValue] = useState('')
+
+	const [searchRangeValue, setSearchRangeValue] = useState('')
+
     // в зависимости от значения  isLoading решаем показывать карточки товаров на главной или  же процесс загрузки
     const [isLoading, setIsLoading] = useState(true)
     // description - состояние для отображения страницы с описанием к товару
@@ -31,27 +34,28 @@ function App() {
 
     const [dataForDescription, setDataForDescription] = useState([])
     // filters - состояние для получения текстового значения кнопки фильтра
-    const [filters, setFilters] = useState("")
+    const [filters, setFilters] = useState('')
 
-    const [selectedOption, setSelectedOption] = useState("")
+    const [selectedOption, setSelectedOption] = useState('')
 
     const [dataOfCard, setDataOfCard] = useState([])
 
     // Состояние для определения - какая именно кнопка заказа - из описаниея или из корзины
-    const [order, setOrder] = useState("")
+    const [order, setOrder] = useState('')
 
-    // Состояние - открыта или закрыто модальное окно благодарности 
+    // Состояние - открыта или закрыто модальное окно благодарности
     const [thanks, setThanks] = useState(false)
 
-    const [color, setColor] = useState('rgb(87, 87, 151)');
+    const [color, setColor] = useState('rgb(87, 87, 151)')
+
 
     useEffect(() => {
-        document.documentElement.style.setProperty('--base-color', color);
-    }, [color]);
+        document.documentElement.style.setProperty('--base-color', color)
+    }, [color])
 
     useEffect(() => {
-        let cartItems = localStorage.getItem("cartItems")
-        let favoritesItems = localStorage.getItem("favoritesItems")
+        let cartItems = localStorage.getItem('cartItems')
+        let favoritesItems = localStorage.getItem('favoritesItems')
         if (favoritesItems) {
             setCardsOfFavorites(JSON.parse(favoritesItems))
         }
@@ -64,7 +68,7 @@ function App() {
     useEffect(() => {
         async function fetachData() {
             const itemsResponse = await axios.get(
-                "https://6478d572362560649a2e842a.mockapi.io/cards"
+                'https://6478d572362560649a2e842a.mockapi.io/cards'
             )
 
             setIsLoading(false)
@@ -74,16 +78,16 @@ function App() {
         fetachData()
     }, [])
 
+	console.clear()
     return (
         <div className="App">
-    
             <Header
                 cart={cart}
                 setCart={setCart}
                 cardsOfCart={cardsOfCart}
                 cardsOfFavorites={cardsOfFavorites}
-				selectedOption={selectedOption}
-				setSelectedOption={setSelectedOption}
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
                 color={color}
                 setColor={setColor}
             />
@@ -94,14 +98,19 @@ function App() {
                     exact
                     element={
                         <>
-                            <Filters setFilters={setFilters} />
+                            <Filters setFilters={setFilters} setSearchRangeValue={setSearchRangeValue} setSearchValue={setSearchValue}/>
                             <Search
+								cards={cards}
                                 searchValue={searchValue}
                                 setSearchValue={setSearchValue}
+								searchRangeValue={searchRangeValue}
+								setSearchRangeValue={setSearchRangeValue}
+								selectedOption={selectedOption}
                             />
                             <Home
                                 cards={cards}
                                 searchValue={searchValue}
+								searchRangeValue={searchRangeValue}
                                 isLoading={isLoading}
                                 cardsOfCart={cardsOfCart}
                                 setCardsOfCart={setCardsOfCart}
@@ -109,9 +118,9 @@ function App() {
                                 cardsOfFavorites={cardsOfFavorites}
                                 setDataForDescription={setDataForDescription}
                                 dataForDescription={dataForDescription}
-								filters={filters}
+                                filters={filters}
                                 setDescription={setDescription}
-								selectedOption={selectedOption}
+                                selectedOption={selectedOption}
                             />
                             {cart && (
                                 <Cart
@@ -120,6 +129,7 @@ function App() {
                                     cardsOfCart={cardsOfCart}
                                     setCardsOfCart={setCardsOfCart}
                                     setOrder={setOrder}
+                                    selectedOption={selectedOption}
                                 />
                             )}
                         </>
@@ -138,12 +148,12 @@ function App() {
                                 setCardsOfCart={setCardsOfCart}
                                 setDataOfCard={setDataOfCard}
                                 setDescription={setDescription}
-								setDataForDescription={setDataForDescription}
+                                setDataForDescription={setDataForDescription}
                                 searchValue={searchValue}
                                 isLoading={isLoading}
                                 dataForDescription={dataForDescription}
-								filters={filters}
-								selectedOption={selectedOption}
+                                filters={filters}
+                                selectedOption={selectedOption}
                             />
                             {cart && (
                                 <Cart
@@ -152,6 +162,7 @@ function App() {
                                     cardsOfCart={cardsOfCart}
                                     setCardsOfCart={setCardsOfCart}
                                     setOrder={setOrder}
+                                    selectedOption={selectedOption}
                                 />
                             )}
                         </>
@@ -167,13 +178,19 @@ function App() {
                     exact
                     element={
                         <>
-                        {description && <Description dataOfCard={dataOfCard} setOrder={setOrder}/>}
-						{cart && (
+                            {description && (
+                                <Description
+                                    dataOfCard={dataOfCard}
+                                    setOrder={setOrder}
+                                />
+                            )}
+                            {cart && (
                                 <Cart
                                     cart={cart}
                                     setCart={setCart}
                                     cardsOfCart={cardsOfCart}
                                     setCardsOfCart={setCardsOfCart}
+                                    selectedOption={selectedOption}
                                 />
                             )}
                         </>
@@ -184,7 +201,12 @@ function App() {
                     exact
                     element={
                         <>
-                            <OrderFromDescription cardsOfCart={cardsOfCart} order={order} dataForDescription={dataForDescription} setThanks={setThanks} />
+                            <OrderFromDescription
+                                cardsOfCart={cardsOfCart}
+                                order={order}
+                                dataForDescription={dataForDescription}
+                                setThanks={setThanks}
+                            />
                             {cart && (
                                 <Cart
                                     cart={cart}
@@ -192,6 +214,7 @@ function App() {
                                     cardsOfCart={cardsOfCart}
                                     setCardsOfCart={setCardsOfCart}
                                     setOrder={setOrder}
+                                    selectedOption={selectedOption}
                                 />
                             )}
                         </>
@@ -199,10 +222,7 @@ function App() {
                 />
             </Routes>
 
-            {
-               thanks && <Thanks setThanks={setThanks}/>
-
-            }
+            {thanks && <Thanks setThanks={setThanks} />}
         </div>
     )
 }

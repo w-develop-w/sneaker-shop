@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styles from './Filters.module.scss';
 
-function Filters({ setFilters }) {
+function Filters({ setFilters, setSearchRangeValue,setSearchValue }) {
   const [activeItem, setActiveItem] = useState('');
 
   function handleItemClick(event) {
+	setSearchValue('')
+	setSearchRangeValue('')
     const itemText = event.target.textContent;
 
     // Проверяем, был ли элемент уже выбран

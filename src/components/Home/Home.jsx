@@ -1,15 +1,10 @@
 import styles from './Home.module.scss'
 import Card from '../Card/Card'
 
-function filterItems(items, searchValue) {
-    return items.filter((item) =>
-        item.name.toLowerCase().includes(searchValue.toLowerCase())
-    )
-}
-
 function Home({
     cards,
     searchValue,
+    searchRangeValue,
     cardsOfCart,
     setCardsOfCart,
     isLoading,
@@ -17,19 +12,40 @@ function Home({
     setCardsOfFavorites,
     setDataForDescription,
     dataForDescription,
-	filters,
-	selectedOption,
-    setDescription
+    filters,
+    selectedOption,
+    setDescription,
 }) {
-    const filteredCards = filterItems(cards, getCurrentValueSearch(searchValue, filters))
 
-	function getCurrentValueSearch(searchValue, filters) {
-		if(searchValue === '') {
-			return filters
+	const filteredCards = filterItems(
+		cards,
+		getCurrentValueSearch(filters, searchValue, searchRangeValue)
+	);
+	
+	function filterItems(items, searchValue) {
+		if (typeof searchValue === 'number') {
+			return items.filter((item) => {
+				return item.price <= searchValue;
+			});
 		} else {
-			return searchValue
+			return items.filter((item) => {
+				return item.name.toLowerCase().includes(searchValue.toLowerCase());
+			});
 		}
 	}
+	
+	function getCurrentValueSearch(filters, searchValue, searchRangeValue) {
+		if (searchRangeValue === '0') {
+			return searchValue;
+		}
+		if (searchValue === null) {
+			return Number(searchRangeValue);
+		}
+		if(searchRangeValue === '' && searchValue === '') {
+			return filters
+		}
+	}
+	
 
     return (
         <div>
@@ -51,7 +67,7 @@ function Home({
                             cardsOfFavorites={cardsOfFavorites}
                             setDataForDescription={setDataForDescription}
                             dataForDescription={dataForDescription}
-							selectedOption={selectedOption}
+                            selectedOption={selectedOption}
                             setDescription={setDescription}
                         />
                     )

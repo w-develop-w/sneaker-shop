@@ -112,7 +112,7 @@ function Card({
                         )
                     }
                 } catch (error) {
-					// console.clear()
+					console.clear()
 				}
             }
         }
@@ -123,8 +123,6 @@ function Card({
             isMounted = false
         }
     }, [price, selectedOption])
-
-	
 
     return loading ? (
         <div className={styles.card}>
