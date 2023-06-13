@@ -56,9 +56,9 @@ function Filters({ setFilters, setSearchRangeValue,setSearchValue }) {
         >
           New Balance
         </li>
-        {/* <li onClick={handleItemClick}>
+        <li onClick={handleItemClick}>
           <i className="ri-close-circle-line"></i>
-        </li> */}
+        </li>
       </ul>
     </div>
   );
