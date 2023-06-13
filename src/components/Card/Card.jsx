@@ -111,16 +111,20 @@ function Card({
                             currencyValue.data.rates[selectedOption]
                         )
                     }
-                } catch (error) {}
+                } catch (error) {
+					// console.clear()
+				}
             }
         }
 
         getCurrencyValue(price, selectedOption)
-
+		
         return () => {
             isMounted = false
         }
     }, [price, selectedOption])
+
+	
 
     return loading ? (
         <div className={styles.card}>
