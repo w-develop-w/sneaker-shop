@@ -43,6 +43,7 @@ function Favorites({
                         name={item ? item.name : ''}
                         price={item ? item.price : ''}
                         url={item ? item.url : ''}
+                        description={item ? item.description : ''}
                         cards={cards}
                         loading={isLoading}
                         cardsOfCart={cardsOfCart}

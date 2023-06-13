@@ -9,6 +9,7 @@ function Card({
     name,
     price,
     url,
+    description,
     cards,
     cardsOfCart,
     setCardsOfCart,
@@ -78,8 +79,8 @@ function Card({
         localStorage.setItem('favoritesItems', JSON.stringify(favoritesItems))
     }
 
-    const setDataDescToLocal = (url, name, price) => {
-        const updatedData = [url, name, price]
+    const setDataDescToLocal = (url, name, price, description) => {
+        const updatedData = [url, name, price, description]
         setDataForDescription(updatedData)
         localStorage.setItem('dataForDescription', JSON.stringify(updatedData))
     }
@@ -156,7 +157,7 @@ function Card({
                     <button
                         className={styles.addInBuy}
                         onClick={() => {
-                            setDataDescToLocal(url, name, price)
+                            setDataDescToLocal(url, name, price, description)
                             setDescription(true)
                         }}
                     >
