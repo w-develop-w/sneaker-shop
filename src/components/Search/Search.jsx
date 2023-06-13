@@ -47,7 +47,7 @@ function Search({
             }
         }
         getCurrencyValue(selectedOption)
-    }, [currencyValue])
+    }, [currencyValue, selectedOption])
 
     return (
         <div className={styles.search}>

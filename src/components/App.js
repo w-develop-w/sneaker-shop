@@ -181,6 +181,7 @@ function App() {
                                 <Description
                                     dataOfCard={dataOfCard}
                                     setOrder={setOrder}
+									selectedOption={selectedOption}
                                 />
                             )}
                             {cart && (

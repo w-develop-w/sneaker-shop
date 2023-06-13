@@ -146,7 +146,7 @@ function Card({
             <h4>{name}</h4>
             <div>
                 <span>
-                    <strong>{currencyPrice}</strong>{' '}
+                    <strong>{Math.round((currencyPrice),1)}</strong>{' '}
                     {selectedOption === '' ? 'USD' : `${selectedOption}`}
                 </span>
             </div>

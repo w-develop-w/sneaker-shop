@@ -48,7 +48,7 @@ function Cart({
             }
         }
         getCurrencyValue(selectedOption)
-    }, [currencyValue])
+    }, [currencyValue, selectedOption])
 	
     return (
         <div className={styles.container}>
