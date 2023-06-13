@@ -46,8 +46,7 @@ function App() {
     // Состояние - открыта или закрыто модальное окно благодарности
     const [thanks, setThanks] = useState(false)
 
-    const [color, setColor] = useState('rgb(87, 87, 151)')
-
+    const [color, setColor] = useState(localStorage.getItem('colorTheme'));
 
     useEffect(() => {
         document.documentElement.style.setProperty('--base-color', color)
