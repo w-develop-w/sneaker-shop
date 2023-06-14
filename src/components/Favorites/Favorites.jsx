@@ -2,6 +2,7 @@ import styles from './Favorites.module.scss'
 import Card from '../Card/Card'
 
 function Favorites({
+	setDevelopers,
     setCardsOfFavorites,
     cardsOfFavorites,
     setDataForDescription,
@@ -14,6 +15,7 @@ function Favorites({
     setDescription,
 }) {
 	document.body.style.overflowY = 'scroll'
+	setDevelopers(false)
 
     return (
         <div className={styles.container}>

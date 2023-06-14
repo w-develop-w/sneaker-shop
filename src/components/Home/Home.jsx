@@ -2,6 +2,7 @@ import styles from './Home.module.scss'
 import Card from '../Card/Card'
 
 function Home({
+	setDevelopers,
     cards,
     searchValue,
     searchRangeValue,
@@ -16,6 +17,7 @@ function Home({
     selectedOption,
     setDescription,
 }) {
+	setDevelopers(true)
 
 	const filteredCards = filterItems(
 		cards,

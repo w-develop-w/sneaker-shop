@@ -1,20 +1,22 @@
-import "./App.scss"
-import React, { useState, useEffect } from "react"
-import { Route, Routes } from "react-router-dom"
-import axios from "axios"
-import Cart from "./Cart/Cart"
-import Header from "./Header/Header"
-import Home from "./Home/Home"
-import Search from "./Search/Search"
-import Favorites from "./Favorites/Favorites"
-import Description from "./Description/Description"
-import Filters from "./Filters/Filters"
-import OrderFromDescription from "./OrderFromDescription/OrderFromDescription"
-import Thanks from "./Thanks/Thanks"
-import Developers from "./Developers/Developers"
-import Footer from "./Footer/Footer"
+import './App.scss'
+import React, { useState, useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import axios from 'axios'
+import Cart from './Cart/Cart'
+import Header from './Header/Header'
+import Home from './Home/Home'
+import Search from './Search/Search'
+import Favorites from './Favorites/Favorites'
+import Description from './Description/Description'
+import Filters from './Filters/Filters'
+import OrderFromDescription from './OrderFromDescription/OrderFromDescription'
+import Thanks from './Thanks/Thanks'
+import Developers from './Developers/Developers'
+import Footer from './Footer/Footer'
 
 function App() {
+    const [developers, setDevelopers] = useState(true)
+
     // state for render modal window
     const [cart, setCart] = useState(false)
     // cards - array with cards
@@ -26,7 +28,7 @@ function App() {
     //  searchValue - переменная для храния данных которые ввел пользователь в поле инпут - поиск
     const [searchValue, setSearchValue] = useState('')
 
-	const [searchRangeValue, setSearchRangeValue] = useState('')
+    const [searchRangeValue, setSearchRangeValue] = useState('')
 
     // в зависимости от значения  isLoading решаем показывать карточки товаров на главной или  же процесс загрузки
     const [isLoading, setIsLoading] = useState(true)
@@ -48,10 +50,10 @@ function App() {
     // Состояние - открыта или закрыто модальное окно благодарности
     const [thanks, setThanks] = useState(false)
 
-    const [color, setColor] = useState(localStorage.getItem("colorTheme"))
+    const [color, setColor] = useState(localStorage.getItem('colorTheme'))
 
     useEffect(() => {
-        document.documentElement.style.setProperty("--base-color", color)
+        document.documentElement.style.setProperty('--base-color', color)
     }, [color])
 
     useEffect(() => {
@@ -79,7 +81,7 @@ function App() {
         fetachData()
     }, [])
 
-	console.clear()
+    console.clear()
     return (
         <div className="App">
             <div>
@@ -94,135 +96,151 @@ function App() {
                     setColor={setColor}
                 />
 
-            <Routes>
-                <Route
-                    path="/"
-                    exact
-                    element={
-                        <>
-                            <Filters setFilters={setFilters} setSearchRangeValue={setSearchRangeValue} setSearchValue={setSearchValue}/>
-                            <Search
-								cards={cards}
-                                searchValue={searchValue}
-                                setSearchValue={setSearchValue}
-								searchRangeValue={searchRangeValue}
-								setSearchRangeValue={setSearchRangeValue}
-								selectedOption={selectedOption}
-                            />
-                            <Home
-                                cards={cards}
-                                searchValue={searchValue}
-                                searchRangeValue={searchRangeValue}
-                                isLoading={isLoading}
-                                cardsOfCart={cardsOfCart}
-                                setCardsOfCart={setCardsOfCart}
-                                setCardsOfFavorites={setCardsOfFavorites}
-                                cardsOfFavorites={cardsOfFavorites}
-                                setDataForDescription={setDataForDescription}
-                                dataForDescription={dataForDescription}
-								filters={filters}
-                                setDescription={setDescription}
-								selectedOption={selectedOption}
-                            />
-                            {cart && (
-                                <Cart
-                                    cart={cart}
-                                    setCart={setCart}
-                                    cardsOfCart={cardsOfCart}
-                                    setCardsOfCart={setCardsOfCart}
-                                    setOrder={setOrder}
+                <Routes>
+                    <Route
+                        path="/"
+                        exact
+                        element={
+                            <>
+                                <Filters
+                                    setFilters={setFilters}
+                                    setSearchRangeValue={setSearchRangeValue}
+                                    setSearchValue={setSearchValue}
+                                />
+                                <Search
+                                    cards={cards}
+                                    searchValue={searchValue}
+                                    setSearchValue={setSearchValue}
+                                    searchRangeValue={searchRangeValue}
+                                    setSearchRangeValue={setSearchRangeValue}
                                     selectedOption={selectedOption}
                                 />
-                            )}
-                        </>
-                    }
-                />
-                <Route
-                    path="/favorites"
-                    exact
-                    element={
-                        <>
-                            <Favorites
-                                cards={cards}
-                                cardsOfFavorites={cardsOfFavorites}
-                                setCardsOfFavorites={setCardsOfFavorites}
-                                cardsOfCart={cardsOfCart}
-                                setCardsOfCart={setCardsOfCart}
-                                setDataOfCard={setDataOfCard}
-                                setDescription={setDescription}
-								setDataForDescription={setDataForDescription}
-                                searchValue={searchValue}
-                                isLoading={isLoading}
-                                dataForDescription={dataForDescription}
-								filters={filters}
-								selectedOption={selectedOption}
-                            />
-                            {cart && (
-                                <Cart
-                                    cart={cart}
-                                    setCart={setCart}
+                                <Home
+                                    setDevelopers={setDevelopers}
+                                    cards={cards}
+                                    searchValue={searchValue}
+                                    searchRangeValue={searchRangeValue}
+                                    isLoading={isLoading}
                                     cardsOfCart={cardsOfCart}
                                     setCardsOfCart={setCardsOfCart}
-                                    setOrder={setOrder}
+                                    setCardsOfFavorites={setCardsOfFavorites}
+                                    cardsOfFavorites={cardsOfFavorites}
+                                    setDataForDescription={
+                                        setDataForDescription
+                                    }
+                                    dataForDescription={dataForDescription}
+                                    filters={filters}
+                                    setDescription={setDescription}
                                     selectedOption={selectedOption}
                                 />
-                            )}
-                        </>
-                    }
-                />
+                                {cart && (
+                                    <Cart
+                                        cart={cart}
+                                        setCart={setCart}
+                                        cardsOfCart={cardsOfCart}
+                                        setCardsOfCart={setCardsOfCart}
+                                        setOrder={setOrder}
+                                        selectedOption={selectedOption}
+                                    />
+                                )}
+                            </>
+                        }
+                    />
+                    <Route
+                        path="/favorites"
+                        exact
+                        element={
+                            <>
+                                <Favorites
+                                    setDevelopers={setDevelopers}
+                                    cards={cards}
+                                    cardsOfFavorites={cardsOfFavorites}
+                                    setCardsOfFavorites={setCardsOfFavorites}
+                                    cardsOfCart={cardsOfCart}
+                                    setCardsOfCart={setCardsOfCart}
+                                    setDataOfCard={setDataOfCard}
+                                    setDescription={setDescription}
+                                    setDataForDescription={
+                                        setDataForDescription
+                                    }
+                                    searchValue={searchValue}
+                                    isLoading={isLoading}
+                                    dataForDescription={dataForDescription}
+                                    filters={filters}
+                                    selectedOption={selectedOption}
+                                />
+                                {cart && (
+                                    <Cart
+                                        cart={cart}
+                                        setCart={setCart}
+                                        cardsOfCart={cardsOfCart}
+                                        setCardsOfCart={setCardsOfCart}
+                                        setOrder={setOrder}
+                                        selectedOption={selectedOption}
+                                    />
+                                )}
+                            </>
+                        }
+                    />
 
-                <Route
-                    // path={`/${String(dataForDescription[1]).replace(
-                    //     /\s/g,
-                    //     ''
-                    // )}`}
-                    path="/about"
-                    exact
-                    element={
-                        <>
-                        {description && (
-                                <Description
-                                    dataOfCard={dataOfCard}
-                                    setOrder={setOrder}
-									selectedOption={selectedOption}
-                                />
-                            )}
-                            {cart && (
-                                <Cart
-                                    cart={cart}
-                                    setCart={setCart}
+                    <Route
+                        // path={`/${String(dataForDescription[1]).replace(
+                        //     /\s/g,
+                        //     ''
+                        // )}`}
+                        path="/about"
+                        exact
+                        element={
+                            <>
+                                {description && (
+                                    <Description
+                                        setDevelopers={setDevelopers}
+                                        dataOfCard={dataOfCard}
+                                        setOrder={setOrder}
+                                        selectedOption={selectedOption}
+                                    />
+                                )}
+                                {cart && (
+                                    <Cart
+                                        cart={cart}
+                                        setCart={setCart}
+                                        cardsOfCart={cardsOfCart}
+                                        setCardsOfCart={setCardsOfCart}
+                                        selectedOption={selectedOption}
+                                    />
+                                )}
+                            </>
+                        }
+                    />
+                    <Route
+                        path="/order"
+                        exact
+                        element={
+                            <>
+                                <OrderFromDescription
                                     cardsOfCart={cardsOfCart}
-                                    setCardsOfCart={setCardsOfCart}
-                                    selectedOption={selectedOption}
+                                    order={order}
+                                    dataForDescription={dataForDescription}
+                                    setThanks={setThanks}
                                 />
-                            )}
-                        </>
-                    }
-                />
-                <Route
-                    path="/order"
-                    exact
-                    element={
-                        <>
-                            <OrderFromDescription cardsOfCart={cardsOfCart} order={order} dataForDescription={dataForDescription} setThanks={setThanks} />
-                            {cart && (
-                                <Cart
-                                    cart={cart}
-                                    setCart={setCart}
-                                    cardsOfCart={cardsOfCart}
-                                    setCardsOfCart={setCardsOfCart}
-                                    setOrder={setOrder}
-                                    selectedOption={selectedOption}
-                                />
-                            )}
-                        </>
-                    }
-                />
-            </Routes>
+                                {cart && (
+                                    <Cart
+                                        cart={cart}
+                                        setCart={setCart}
+                                        cardsOfCart={cardsOfCart}
+                                        setCardsOfCart={setCardsOfCart}
+                                        setOrder={setOrder}
+                                        selectedOption={selectedOption}
+                                    />
+                                )}
+                            </>
+                        }
+                    />
+                </Routes>
 
                 {thanks && <Thanks setThanks={setThanks} />}
             </div>
-			<Developers/>
+            {developers && <Developers />}
             <Footer />
         </div>
     )

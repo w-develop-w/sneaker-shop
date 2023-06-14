@@ -3,7 +3,9 @@ import styles from "./Description.module.scss"
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-function Description({ dataOfCard, setOrder, selectedOption }) {
+function Description({ dataOfCard, setOrder, selectedOption, setDevelopers }) {
+	setDevelopers(false)
+
     const data1 = localStorage.getItem("dataForDescription")
     const data2 = JSON.parse(data1)
     // console.log(dataOfCard)
