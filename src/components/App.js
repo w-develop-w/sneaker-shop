@@ -218,6 +218,7 @@ function App() {
                         element={
                             <>
                                 <OrderFromDescription
+									setDevelopers={setDevelopers}
                                     cardsOfCart={cardsOfCart}
                                     order={order}
                                     dataForDescription={dataForDescription}

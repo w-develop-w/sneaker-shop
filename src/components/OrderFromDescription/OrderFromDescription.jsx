@@ -31,12 +31,14 @@ const sendEmail = (formData) => {
 }
 
 function OrderFromDescription({
+	setDevelopers,
     cardsOfCart,
     order,
     dataForDescription,
     setThanks,
 }) {
     document.body.style.overflowY = 'scroll'
+	setDevelopers(false)
 
     const arrChoiceCart = cardsOfCart.map((obj) => obj.name)
     const strChoiceCart = arrChoiceCart.join(', ')
