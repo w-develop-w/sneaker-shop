@@ -271,5 +271,12 @@
         "price": 110,
         "url": "/img/39.jpeg",
         "description": "Inspired by Nike Daybreak, the elegant Nike Waffle Debut sneaker adds retro charm to your style. Suede and nylon in pastel colors, updated wedge midsole with lift - perfect for everyday wear. The midsole made of foam material creates a feeling of elasticity with each step. Style, comfort, iconic Waffle sole - all in one pair. The Swoosh logo is used as a loop, wrapping around the heel, which not only adds aesthetic appeal, but also provides convenience when putting on and taking off the shoe."
+    },
+    {
+        "id": 40,
+        "name": "Nike Pegasus 40",
+        "price": 190,
+        "url": "/img/40.jpeg",
+        "description": "Nike Pegasus 40 is the latest iteration of the iconic running shoe series by Nike. Designed for athletes and running enthusiasts, these sneakers combine exceptional comfort, performance, and style. With its sleek and dynamic design, the Nike Pegasus 40 is sure to catch the eye of both runners and sneaker aficionados.One of the standout features of the Nike Pegasus 40 is its responsive and cushioned ride. The shoe incorporates Nike's advanced cushioning technology, providing a comfortable and supportive feel throughout your run. The midsole features a combination of Nike Zoom Air and foam cushioning, which offers a springy and energizing sensation, helping to propel you forward with every stride.The upper of the Nike Pegasus 40 is constructed using breathable and lightweight materials. This ensures proper airflow to keep your feet cool and dry, even during intense workouts or long-distance runs. The shoe also features a secure and adjustable fit, thanks to its traditional lacing system and supportive overlays that wrap around the midfoot.Durability is another key aspect of the Nike Pegasus 40. The outsole is made of durable rubber with a waffle pattern, providing excellent traction on various surfaces. This ensures a reliable grip and stability, allowing you to confidently tackle any terrain or weather condition."
     }
 ]
