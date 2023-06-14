@@ -243,5 +243,33 @@
         "price": 240,
         "url": "/img/35.jpeg",
         "description": "Nike Air Max 97 is a classic sneaker model that has garnered immense popularity since its initial release in 1997. These iconic sneakers are known for their sleek and futuristic design, which continues to captivate sneaker enthusiasts to this day.The Nike Air Max 97 features a distinctive silhouette with a low-top profile and a streamlined appearance. The upper is constructed with a combination of materials such as mesh, leather, and synthetic overlays, providing a comfortable and durable fit. The shoe's most notable feature is the wavy, undulating lines that run along the entire length of the upper, creating a unique visual appeal.Equipped with Nike's groundbreaking Air Max technology, the Air Max 97 boasts exceptional cushioning and support. The full-length Air unit, visible through the translucent outsole, offers superior impact absorption and responsiveness, making these sneakers ideal for everyday wear or athletic activities.The Air Max 97 also includes several design elements that enhance both style and functionality. A lace-up closure system ensures a secure fit, while padded collar and tongue provide additional comfort. The tongue features Nike branding, and the iconic Swoosh logo adorns the sides of the shoe, adding a touch of brand recognition.Available in a wide range of colorways, the Nike Air Max 97 offers options to suit different preferences and styles. Whether you prefer bold and vibrant hues or a more understated and versatile color palette, there is a version of the Air Max 97 to match your taste."
+    },
+    {
+        "id": 36,
+        "name": "Nike Air Max 95 Black&Gold",
+        "price": 190,
+        "url": "/img/36.jpeg",
+        "description": "Nike Air Max 95 sneakers combine incredible comfort with modern style. One of the most popular sneakers in the world, which has been repeatedly reissued. Mesh details combined with leather and overlays provide a breathable and durable construction. The combination of natural and synthetic materials in the construction of the upper ensures the strength and wear resistance of the shoe. Innovative lacing system for a perfect fit. Visible Nike Air cushioning provides all-day comfort. Flexible grooves allow your feet to flex and move naturally."
+    },
+    {
+        "id": 37,
+        "name": "Nike Air Max 95 Light Gray",
+        "price": 190,
+        "url": "/img/37.jpeg",
+        "description": "Nike Air Max 95 sneakers combine incredible comfort with modern style. One of the most popular sneakers in the world, which has been repeatedly reissued. Mesh details combined with leather and overlays provide a breathable and durable construction. The combination of natural and synthetic materials in the construction of the upper ensures the strength and wear resistance of the shoe. Innovative lacing system for a perfect fit. Visible Nike Air cushioning provides all-day comfort. Flexible grooves allow your feet to flex and move naturally."
+    },
+    {
+        "id": 38,
+        "name": "Nike Waffle Debut Black",
+        "price": 110,
+        "url": "/img/38.jpeg",
+        "description": "Inspired by Nike Daybreak, the elegant Nike Waffle Debut sneaker adds retro charm to your style. Suede and nylon in pastel colors, updated wedge midsole with lift - perfect for everyday wear. The midsole made of foam material creates a feeling of elasticity with each step. Style, comfort, iconic Waffle sole - all in one pair. The Swoosh logo is used as a loop, wrapping around the heel, which not only adds aesthetic appeal, but also provides convenience when putting on and taking off the shoe."
+    },
+    {
+        "id": 39,
+        "name": "Nike Waffle Debut LightBlue",
+        "price": 110,
+        "url": "/img/39.jpeg",
+        "description": "Inspired by Nike Daybreak, the elegant Nike Waffle Debut sneaker adds retro charm to your style. Suede and nylon in pastel colors, updated wedge midsole with lift - perfect for everyday wear. The midsole made of foam material creates a feeling of elasticity with each step. Style, comfort, iconic Waffle sole - all in one pair. The Swoosh logo is used as a loop, wrapping around the heel, which not only adds aesthetic appeal, but also provides convenience when putting on and taking off the shoe."
     }
 ]
