@@ -27,10 +27,12 @@ function Filters({ setFilters, setSearchRangeValue, setSearchValue }) {
                 <li
                     onClick={handleItemClick}
                     className={`${styles.filterItem} ${
-                        activeItem === 'Puma' ? styles.filterItemActive : ''
+                        activeItem === 'New Balance'
+                            ? styles.filterItemActive
+                            : ''
                     }`}
                 >
-                    Puma
+                    New Balance
                 </li>
                 <li
                     onClick={handleItemClick}
@@ -43,20 +45,10 @@ function Filters({ setFilters, setSearchRangeValue, setSearchValue }) {
                 <li
                     onClick={handleItemClick}
                     className={`${styles.filterItem} ${
-                        activeItem === 'Adidas' ? styles.filterItemActive : ''
+                        activeItem === 'Puma' ? styles.filterItemActive : ''
                     }`}
                 >
-                    Adidas
-                </li>
-                <li
-                    onClick={handleItemClick}
-                    className={`${styles.filterItem} ${
-                        activeItem === 'New Balance'
-                            ? styles.filterItemActive
-                            : ''
-                    }`}
-                >
-                    New Balance
+                    Puma
                 </li>
                 <li onClick={handleItemClick}>
                     <i className="ri-close-circle-line"></i>
