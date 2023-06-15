@@ -1,4 +1,4 @@
-@use "../../index.scss" as index;
+@use '../../index.scss' as index;
 
 .container {
     display: flex;
@@ -12,7 +12,7 @@
     height: 100%;
     backdrop-filter: blur(7px);
     animation: any 0.3s;
-    
+
     @keyframes any {
         0% {
             opacity: 0;
@@ -21,10 +21,11 @@
             opacity: 1;
         }
     }
-    
+
     .thanks {
-        height: 420px;
-        width: 550px;
+        margin: 15px;
+        height: 280px;
+        width: 540px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -33,22 +34,20 @@
         background-color: white;
         position: relative;
         padding: 15px;
-        // width: 40%;
         border-radius: 30px;
-        // background-color: index.$base-color;
         background-color: var(--base-color);
         color: white;
         box-shadow: 0 0 10px 5px rgb(137, 137, 137);
         position: relative;
-        
+
         .close {
             width: 100%;
             display: flex;
             justify-content: flex-end;
-            
+
             i {
                 position: absolute;
-                right: 20px;
+                right: 0px;
                 top: 20px;
                 font-size: 30px;
                 color: white;
@@ -62,16 +61,35 @@
                     color: rgb(211, 211, 211);
                 }
             }
-        } 
+        }
 
         h2 {
             margin-top: 0;
             font-size: 30px;
+            padding: 10px;
         }
-        
+
         h3 {
             margin-top: 0;
-            // padding-top: 80px;
+            padding: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        .thanks {
+            width: 70%;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+        .thanks {
+            h2 {
+                margin-top: 50px;
+            }
         }
     }
 }
