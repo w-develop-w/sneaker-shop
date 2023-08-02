@@ -1,5 +1,4 @@
-#+title: 💪muscle-meals
-👟sneaker-shop
+#+title: 👟sneaker-shop
 #+begin_html
 <div align="center">
 		<img src="./public/img/screenshot.jpg">
