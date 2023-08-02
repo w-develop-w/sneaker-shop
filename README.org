@@ -1,0 +1,27 @@
+#+title: 💪muscle-meals
+👟sneaker-shop
+#+begin_html
+<div align="center">
+		<img src="./public/img/screenshot.jpg">
+</div>
+
+
+#+end_html
+
+#+begin_center
+👟sneaker-shop is site which in users can order shoes or just see.
+Site have search, currency switching, filters by price, firms.
+#+end_center
+
+** Installation👉
+*** 1. Clone this repository:
+#+begin_src bash
+  git clone https://github.com/w-develop-w/sneaker-shop.git
+#+end_src
+
+*** 2. Open terminal and paste this command: 
+#+begin_src bash
+  npm start
+#+end_src
+
+The project will run and you can test this site✨
