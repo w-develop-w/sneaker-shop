@@ -50,6 +50,14 @@ function Filters({ setFilters, setSearchRangeValue, setSearchValue }) {
                 >
                     Puma
                 </li>
+                <li
+                    onClick={handleItemClick}
+                    className={`${styles.filterItem} ${
+                        activeItem === 'Stone Island' ? styles.filterItemActive : ''
+                    }`}
+                >
+                    Stone Island
+                </li>
                 <li onClick={handleItemClick}>
                     <i className="ri-close-circle-line"></i>
                 </li>
